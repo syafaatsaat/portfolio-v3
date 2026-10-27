@@ -21,7 +21,7 @@ export default function Contact({ links, availability, name }) {
     <Section id="contact">
       <Window title={`${SECTION_FILES.contact.file} — instant message`} accent="cyan" className="chat-window">
         <div className="window__body">
-          <ChromeHeading className="section-title">Contact</ChromeHeading>
+          <ChromeHeading glitch className="section-title">Contact</ChromeHeading>
           <div className="chat">
             <Message from="you">hey! how do i reach you? 👋</Message>
             <Message from={me} mine>

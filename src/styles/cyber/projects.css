@@ -10,7 +10,8 @@
     flex-direction: column;
 
     /* staggered like windows dropped on a desktop */
-    &:nth-child(2) { transform: translateY(26px); }
+    &:nth-child(2) { translate: 0 26px; --window-delay: 90ms; }
+    &:nth-child(3) { --window-delay: 180ms; }
   }
 
   .app__menu {
@@ -86,7 +87,7 @@
       margin: 0 auto;
     }
 
-    .app:nth-child(2) { transform: none; }
+    .app:nth-child(2) { translate: none; }
     .apps__note { margin-top: 24px; text-align: center; }
   }
 }

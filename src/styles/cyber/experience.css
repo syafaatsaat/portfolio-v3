@@ -10,6 +10,14 @@
   .terminal__prompt { color: var(--lime); }
   .terminal__idle { margin-top: 18px; }
 
+  /* Lines print one after another once the terminal is in view, after its window has opened */
+  .terminal[data-printing='false'] .terminal__line { clip-path: inset(0 100% 0 0); }
+
+  .terminal[data-printing='true'] .terminal__line {
+    animation: cy-print 260ms steps(14, end) both;
+    animation-delay: calc(var(--duration-window) + var(--line, 0) * var(--line-delay));
+  }
+
   .log-entry {
     padding: 18px 0;
     border-bottom: 1px dashed var(--line);

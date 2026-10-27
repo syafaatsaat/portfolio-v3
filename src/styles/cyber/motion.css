@@ -1,0 +1,77 @@
+/*
+ * SYAF_OS keyframes. Kept top-level (keyframes can't be nested inside .cyber) and
+ * prefixed cy- so they never clash with the main theme's.
+ * Each effect animates its own property (scale, translate, opacity, clip-path)
+ * so it combines with the transforms already on the page instead of replacing them.
+ */
+
+/* CRT power-on: a bright line widens across the screen, then the black panels open around it */
+@keyframes cy-crt-line-on {
+  0% { scale: 0 1; opacity: 1; }
+  30% { scale: 1 1; opacity: 1; }
+  100% { scale: 1 1; opacity: 0; }
+}
+
+@keyframes cy-crt-panel-open {
+  0%, 30% { scale: 1 1; }
+  100% { scale: 1 0; }
+}
+
+/* CRT power-off: the panels close onto a line, the line shrinks to a dot, the dot fades to black */
+@keyframes cy-crt-panel-close {
+  0% { scale: 1 0; }
+  50%, 100% { scale: 1 1; }
+}
+
+@keyframes cy-crt-line-off {
+  0%, 45% { scale: 1 1; opacity: 0; }
+  50% { scale: 1 1; opacity: 1; }
+  85% { scale: 0.004 1; opacity: 1; }
+  100% { scale: 0.004 1; opacity: 0; }
+}
+
+/* Window pops open */
+@keyframes cy-window-open {
+  from { opacity: 0; scale: 0.92; }
+  to { opacity: 1; scale: 1; }
+}
+
+/* Terminal line prints left to right */
+@keyframes cy-print {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(-4px); }
+}
+
+/* Module loading bar fills up */
+@keyframes cy-load {
+  from { scale: 0 1; }
+  to { scale: 1 1; }
+}
+
+/* Glitch: the two tinted copies jump out of place in slices for a moment, then vanish */
+@keyframes cy-glitch-a {
+  0%, 92%, 98%, 100% { opacity: 0; translate: 0; clip-path: inset(0 0 100% 0); }
+  93% { opacity: 1; translate: -4px 0; clip-path: inset(12% 0 58% 0); }
+  95% { opacity: 1; translate: 3px 0; clip-path: inset(62% 0 8% 0); }
+  97% { opacity: 1; translate: -2px 0; clip-path: inset(35% 0 40% 0); }
+}
+
+@keyframes cy-glitch-b {
+  0%, 92%, 98%, 100% { opacity: 0; translate: 0; clip-path: inset(0 0 100% 0); }
+  93% { opacity: 1; translate: 4px 0; clip-path: inset(55% 0 20% 0); }
+  95% { opacity: 1; translate: -3px 0; clip-path: inset(8% 0 70% 0); }
+  97% { opacity: 1; translate: 2px 0; clip-path: inset(70% 0 5% 0); }
+}
+
+/* Same slices, but continuous while hovered */
+@keyframes cy-glitch-burst-a {
+  0% { translate: -4px 0; clip-path: inset(12% 0 58% 0); }
+  33% { translate: 3px 0; clip-path: inset(62% 0 8% 0); }
+  66% { translate: -2px 0; clip-path: inset(35% 0 40% 0); }
+}
+
+@keyframes cy-glitch-burst-b {
+  0% { translate: 4px 0; clip-path: inset(55% 0 20% 0); }
+  33% { translate: -3px 0; clip-path: inset(8% 0 70% 0); }
+  66% { translate: 2px 0; clip-path: inset(70% 0 5% 0); }
+}

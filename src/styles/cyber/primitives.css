@@ -20,6 +20,45 @@
 
   .section-title--standalone { margin-bottom: 30px; }
 
+  /* Glitch: two tinted copies of the text, hidden except for a brief burst every 7s and on hover */
+  .glitch {
+    position: relative;
+
+    &::before,
+    &::after {
+      content: attr(data-text) / '';
+      position: absolute;
+      inset: 0;
+      background: none;
+      opacity: 0;
+      pointer-events: none;
+      animation: cy-glitch-a 7s steps(1, end) infinite;
+      animation-delay: var(--glitch-delay, 0s);
+    }
+
+    &::before { color: var(--cyan); }
+
+    &::after {
+      color: var(--magenta);
+      animation-name: cy-glitch-b;
+    }
+
+    &:hover::before,
+    &:hover::after {
+      opacity: 1;
+      animation: cy-glitch-burst-a 0.36s steps(1, end) infinite;
+    }
+
+    &:hover::after { animation-name: cy-glitch-burst-b; }
+  }
+
+  /* Stagger the bursts so the headings never glitch in sync */
+  .section:nth-of-type(2) .glitch { --glitch-delay: -2.4s; }
+  .section:nth-of-type(3) .glitch { --glitch-delay: -4.8s; }
+  .section:nth-of-type(4) .glitch { --glitch-delay: -1.2s; }
+  .section:nth-of-type(5) .glitch { --glitch-delay: -3.6s; }
+  .section:nth-of-type(6) .glitch { --glitch-delay: -6s; }
+
   /* ---------- Window ---------- */
   .window {
     position: relative;
@@ -27,6 +66,17 @@
     background: rgba(12, 15, 36, 0.92);
     border: 1px solid var(--line);
     border-radius: 10px;
+  }
+
+  /* Opens the first time it scrolls into view; --window-delay staggers neighbours */
+  .window[data-open='false'] {
+    opacity: 0;
+    scale: 0.92;
+  }
+
+  .window[data-open='true'] {
+    animation: cy-window-open var(--duration-window) var(--ease-pop) both;
+    animation-delay: var(--window-delay, 0ms);
   }
 
   .window--magenta { box-shadow: 8px 8px 0 var(--magenta), 0 0 0 1px rgba(0, 240, 255, 0.15), 0 30px 60px rgba(0, 0, 0, 0.5); }
@@ -141,6 +191,58 @@
   .gloss--lime {
     background: linear-gradient(180deg, #e8ffb8 0%, var(--lime) 48%, #7cc800 52%, #c6ff6b 100%);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 0 0 2px var(--ink), 0 0 0 3px var(--lime), 0 0 22px rgba(182, 255, 59, 0.4);
+  }
+
+  /* ---------- CRT overlay ---------- */
+  .crt {
+    position: fixed;
+    inset: 0;
+    z-index: 150;
+    pointer-events: none;
+
+    /* Black panels that open from / close onto the centre line */
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: #000;
+      scale: 1 0;
+    }
+
+    &::before { top: 0; transform-origin: top; }
+    &::after { bottom: 0; transform-origin: bottom; }
+  }
+
+  .crt__line {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    top: calc(50% - 1.5px);
+    height: 3px;
+    background: #fff;
+    box-shadow: 0 0 18px 4px var(--cyan);
+    opacity: 0;
+  }
+
+  .crt--on {
+    &::before,
+    &::after { animation: cy-crt-panel-open var(--duration-crt) var(--ease-snap) both; }
+
+    .crt__line { animation: cy-crt-line-on var(--duration-crt) ease-out both; }
+  }
+
+  /* Blocks clicks while the screen switches off */
+  .crt--off {
+    pointer-events: auto;
+
+    &::before,
+    &::after { animation: cy-crt-panel-close var(--duration-crt-off) ease-in both; }
+
+    .crt__line { animation: cy-crt-line-off var(--duration-crt-off) linear both; }
   }
 
   /* ---------- Chip ---------- */

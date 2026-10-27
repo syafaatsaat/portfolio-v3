@@ -19,7 +19,7 @@ const MENU = ['File', 'Edit', 'View', 'Help']
 export default function Projects({ items, note }) {
   return (
     <Section id="projects">
-      <ChromeHeading className="section-title section-title--standalone">{SECTION_FILES.projects.file}</ChromeHeading>
+      <ChromeHeading glitch className="section-title section-title--standalone">{SECTION_FILES.projects.file}</ChromeHeading>
       <div className="apps">
         {items.map((project, index) => {
           const style = STYLES[index % STYLES.length]

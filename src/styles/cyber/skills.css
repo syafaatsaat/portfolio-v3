@@ -58,11 +58,32 @@
     color: var(--lime);
   }
 
+  .module__status--loading {
+    color: var(--mute);
+    animation: cy-blink 0.8s steps(2) infinite;
+  }
+
   .module__bar {
     height: 6px;
     margin-bottom: 14px;
     border-radius: 3px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .module__fill {
+    display: block;
+    height: 100%;
     background: linear-gradient(90deg, var(--magenta), var(--cyan));
+    transform-origin: left;
+  }
+
+  /* Bars fill in chunks, one module after another, once the grid is in view */
+  .modules[data-loading='false'] .module__fill { scale: 0 1; }
+
+  .modules[data-loading='true'] .module__fill {
+    animation: cy-load 900ms steps(12, end) both;
+    animation-delay: calc(var(--duration-window) + var(--i, 0) * 160ms);
   }
 
   .module__chips {

@@ -1,4 +1,6 @@
 import '../../styles/cyber/index.css'
+import { useExitAnimation } from '../../states/hooks/useExitAnimation.js'
+import CrtOverlay from './primitives/CrtOverlay.jsx'
 import About from './sections/About.jsx'
 import Contact from './sections/Contact.jsx'
 import Desktop from './sections/Desktop.jsx'
@@ -12,10 +14,12 @@ import Taskbar from './sections/Taskbar.jsx'
 export default function CyberSite({ profile, onToggleTheme }) {
   const { person, education, experience, skills, projects, projectsNote, links } = profile
   const fullName = `${person.firstName} ${person.middleName} ${person.lastName}`
+  // Exit powers the screen off first; the theme switches once the animation ends
+  const powerOff = useExitAnimation(onToggleTheme)
 
   return (
     <div className="cyber">
-      <Taskbar timeZone={person.timeZone} timeZoneLabel={person.timeZoneLabel} onExit={onToggleTheme} />
+      <Taskbar timeZone={person.timeZone} timeZoneLabel={person.timeZoneLabel} onExit={powerOff.start} />
       <main id="top">
         <Desktop person={person} cvUrl={links.cv} projectCount={projects.length} />
         <About person={person} education={education} />
@@ -25,6 +29,7 @@ export default function CyberSite({ profile, onToggleTheme }) {
         <Contact links={links} availability={person.availability} name={person.shortName} />
       </main>
       <Footer name={fullName} />
+      <CrtOverlay mode={powerOff.isLeaving ? 'off' : 'on'} onAnimationEnd={powerOff.handleAnimationEnd} />
     </div>
   )
 }

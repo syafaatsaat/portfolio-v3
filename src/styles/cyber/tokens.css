@@ -21,6 +21,7 @@ html[data-theme='cyber'] {
   --ease-snap: cubic-bezier(0.2, 0.8, 0.2, 1);
   --ease-pop: cubic-bezier(0.34, 1.56, 0.64, 1);
   --duration-crt: 650ms;
+  --duration-crt-off: 700ms;
   --duration-window: 320ms;
   --line-delay: 60ms;
 }

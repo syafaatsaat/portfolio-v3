@@ -17,7 +17,7 @@ export default function About({ person, education }) {
     <Section id="about">
       <Window title={SECTION_FILES.about.file} accent="cyan" offset="left">
         <div className="window__body">
-          <ChromeHeading className="section-title">About</ChromeHeading>
+          <ChromeHeading glitch className="section-title">About</ChromeHeading>
           <div className="about">
             <div className="about__text">
               {person.about.map((paragraph) => (
