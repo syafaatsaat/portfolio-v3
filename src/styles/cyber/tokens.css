@@ -16,4 +16,11 @@ html[data-theme='cyber'] {
   --font-display: 'Orbitron', sans-serif;
   --font-mono: 'Space Mono', monospace;
   --font-body: 'Inter', system-ui, sans-serif;
+
+  /* Motion */
+  --ease-snap: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-pop: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --duration-crt: 650ms;
+  --duration-window: 320ms;
+  --line-delay: 60ms;
 }
