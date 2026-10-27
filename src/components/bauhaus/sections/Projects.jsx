@@ -5,12 +5,12 @@ import Section from '../primitives/Section.jsx'
 import Tile from '../primitives/Tile.jsx'
 import ProjectArt from './ProjectArt.jsx'
 
-const COLORS = ['white', 'yellow', 'white']
+const COLORS = ['white', 'yellow', 'yellow', 'white']
 
 export default function Projects({ items, note }) {
   return (
     <Section id="projects" title="Projects">
-      <Bento columns={3}>
+      <Bento columns={2}>
         {items.map((project, index) => (
           <Tile key={project.id} as="article" color={COLORS[index % COLORS.length]} flush className="project">
             <ProjectArt motif={project.motif} preview={project.preview} name={project.name} />

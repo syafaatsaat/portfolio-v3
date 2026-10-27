@@ -1,7 +1,7 @@
 .cyber {
   .apps {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 26px;
   }
 
@@ -10,8 +10,10 @@
     flex-direction: column;
 
     /* staggered like windows dropped on a desktop */
-    &:nth-child(2) { translate: 0 26px; --window-delay: 90ms; }
+    &:nth-child(even) { translate: 0 26px; }
+    &:nth-child(2) { --window-delay: 90ms; }
     &:nth-child(3) { --window-delay: 180ms; }
+    &:nth-child(4) { --window-delay: 270ms; }
   }
 
   .app__menu {
@@ -138,7 +140,7 @@
       margin: 0 auto;
     }
 
-    .app:nth-child(2) { translate: none; }
+    .app:nth-child(even) { translate: none; }
     .apps__note { margin-top: 24px; text-align: center; }
   }
 }

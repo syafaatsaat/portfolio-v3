@@ -144,11 +144,11 @@ export const projects = [
     preview: '/projects/battleship.webp',
     category: 'Web · Game',
     description: 'A classic Battleship game, play with a friend locally or challenge a bot.',
-    motif: 'tiles',
+    motif: 'lines',
   },
 ]
 
-export const projectsNote = 'All three built end to end with Claude Code.'
+export const projectsNote = 'Linework, Holo Vault and Memory Legends built end to end with Claude Code.'
 
 export const links = {
   email: 'syafaatsaat@gmail.com',

@@ -44,6 +44,7 @@
   .bento--cols-6 { grid-template-columns: repeat(6, 1fr); }
   .bento--cols-4 { grid-template-columns: repeat(4, 1fr); }
   .bento--cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .bento--cols-2 { grid-template-columns: repeat(2, 1fr); }
 
   /* Reveal: tiles wipe open left to right, one after another (--i = position in the grid) */
   .bento > :nth-child(2) { --i: 1; }
@@ -139,7 +140,8 @@
   }
 
   @media (max-width: 768px) {
-    .bento--cols-3 { grid-template-columns: 1fr; }
+    .bento--cols-3,
+    .bento--cols-2 { grid-template-columns: 1fr; }
   }
 
   @media (max-width: 560px) {
