@@ -2,6 +2,7 @@ import { SECTION_IDS } from '../../../data/sections.js'
 import { useActiveSection } from '../../../states/hooks/useActiveSection.js'
 import { useClock } from '../../../states/hooks/useClock.js'
 import { useMobileMenu } from '../../../states/hooks/useMobileMenu.js'
+import ArrowIcon from '../../shared/ArrowIcon.jsx'
 import { classNames } from '../../shared/classNames.js'
 import { SECTION_FILES } from '../sectionFiles.js'
 
@@ -25,7 +26,8 @@ export default function Taskbar({ timeZone, timeZoneLabel, onExit }) {
           aria-controls="taskbar-links"
           onClick={menu.toggle}
         >
-          {menu.isOpen ? 'CLOSE ▴' : 'MENU ▾'}
+          {menu.isOpen ? 'CLOSE' : 'MENU'}
+          <ArrowIcon direction="chevron-down" />
         </button>
         <ul id="taskbar-links" className={classNames('taskbar__links', menu.isOpen && 'taskbar__links--open')}>
           {SECTION_IDS.map((id) => (

@@ -1,3 +1,4 @@
+import ArrowIcon from '../../shared/ArrowIcon.jsx'
 import ChromeHeading from '../primitives/ChromeHeading.jsx'
 import GlossButton from '../primitives/GlossButton.jsx'
 import Section from '../primitives/Section.jsx'
@@ -38,13 +39,13 @@ export default function Contact({ links, availability, name }) {
           <div className="chat__actions">
             <GlossButton href={`mailto:${links.email}`}>✉ Send email</GlossButton>
             <GlossButton href={links.linkedin.url} external variant="pink">
-              LinkedIn ↗
+              LinkedIn <ArrowIcon direction="up-right" />
             </GlossButton>
             <GlossButton href={links.github.url} external variant="lime">
-              GitHub ↗
+              GitHub <ArrowIcon direction="up-right" />
             </GlossButton>
             <GlossButton href={links.cv} external>
-              CV.pdf ↓
+              CV.pdf <ArrowIcon direction="down" />
             </GlossButton>
           </div>
         </div>

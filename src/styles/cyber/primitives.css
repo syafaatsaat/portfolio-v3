@@ -245,6 +245,18 @@
     .crt__line { animation: cy-crt-line-off var(--duration-crt-off) linear both; }
   }
 
+  /* ---------- Arrow icon ---------- */
+  .arrow-icon {
+    width: 1.15em;
+    height: 1.15em;
+    flex-shrink: 0;
+    stroke-width: 2.5;
+    transition: transform 0.2s, rotate 0.2s;
+  }
+
+  .gloss:hover .arrow-icon--up-right { transform: translate(3px, -3px); }
+  .gloss:hover .arrow-icon--down { transform: translateY(3px); }
+
   /* ---------- Chip ---------- */
   .chip {
     padding: 5px 10px;

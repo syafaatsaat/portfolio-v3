@@ -153,7 +153,14 @@
       box-shadow: 0 6px 30px rgba(0, 240, 255, 0.18);
     }
 
-    .taskbar__burger { display: block; }
+    .taskbar__burger {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* The caret flips to point up while the menu is open */
+    .taskbar__burger[aria-expanded='true'] .arrow-icon { rotate: 180deg; }
 
     .taskbar__links {
       display: none;

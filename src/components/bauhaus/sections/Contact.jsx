@@ -1,5 +1,5 @@
+import ArrowIcon from '../../shared/ArrowIcon.jsx'
 import ExternalLink from '../../shared/ExternalLink.jsx'
-import ArrowIcon from '../primitives/ArrowIcon.jsx'
 import Bento from '../primitives/Bento.jsx'
 import Section from '../primitives/Section.jsx'
 import Shape from '../primitives/Shape.jsx'

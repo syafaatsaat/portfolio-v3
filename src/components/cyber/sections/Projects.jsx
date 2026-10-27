@@ -1,5 +1,6 @@
 import { toFileName } from '../primitives/fileName.js'
 import ChromeHeading from '../primitives/ChromeHeading.jsx'
+import ArrowIcon from '../../shared/ArrowIcon.jsx'
 import ExternalLink from '../../shared/ExternalLink.jsx'
 import GlossButton from '../primitives/GlossButton.jsx'
 import Section from '../primitives/Section.jsx'
@@ -45,7 +46,7 @@ export default function Projects({ items, note }) {
                       size="sm"
                       aria-label={`${project.name}, live app`}
                     >
-                      Launch ↗
+                      Launch <ArrowIcon direction="up-right" />
                     </GlossButton>
                   )}
                   <ExternalLink
@@ -53,7 +54,8 @@ export default function Projects({ items, note }) {
                     className="app__source"
                     aria-label={`${project.name}, source code on GitHub`}
                   >
-                    view source →
+                    <span className="app__source-label">view source</span>
+                    <ArrowIcon direction="right" />
                   </ExternalLink>
                 </div>
               </div>
