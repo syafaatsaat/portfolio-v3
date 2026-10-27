@@ -13,7 +13,7 @@ export default function Projects({ items, note }) {
       <Bento columns={3}>
         {items.map((project, index) => (
           <Tile key={project.id} as="article" color={COLORS[index % COLORS.length]} flush className="project">
-            <ProjectArt motif={project.motif} />
+            <ProjectArt motif={project.motif} preview={project.preview} name={project.name} />
             <div className="project__info">
               <span className="label">{project.category}</span>
               <h3 className="project__name">{project.name}</h3>

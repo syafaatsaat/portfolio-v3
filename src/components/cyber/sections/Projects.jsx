@@ -31,7 +31,7 @@ export default function Projects({ items, note }) {
                   <span key={item}>{item}</span>
                 ))}
               </div>
-              <ProjectScreen motif={project.motif} accent={style.accent} />
+              <ProjectScreen motif={project.motif} accent={style.accent} preview={project.preview} name={project.name} />
               <div className="window__body app__body">
                 <h3 className="app__name">{project.name}</h3>
                 <p className="app__description">{project.description}</p>

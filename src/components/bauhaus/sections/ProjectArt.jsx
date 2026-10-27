@@ -32,8 +32,29 @@ const ARTWORK = {
   tiles: { Art: TilesArt, background: 'yellow' },
 }
 
-export default function ProjectArt({ motif }) {
+/**
+ * The picture panel of a project card. Shows the app's screenshot when there is one,
+ * tinted in the motif's colour; otherwise the motif's geometric illustration.
+ */
+export default function ProjectArt({ motif, preview, name }) {
   const { Art, background } = ARTWORK[motif] ?? ARTWORK.lines
+
+  if (preview) {
+    return (
+      <div className={classNames('project__art', `project__art--${background}`, 'project__art--preview')}>
+        <img
+          src={preview}
+          alt={`Screenshot of ${name}`}
+          className="project__preview"
+          width="800"
+          height="500"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+    )
+  }
+
   return (
     <div className={classNames('project__art', `project__art--${background}`)} aria-hidden="true">
       <Art />

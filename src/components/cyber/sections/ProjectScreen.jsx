@@ -24,8 +24,24 @@ const SCREENS = {
   ),
 }
 
-/** The "screen" area of a project's app window, illustrated by the project's motif. */
-export default function ProjectScreen({ motif, accent }) {
+/** The "screen" area of a project's app window: the app's screenshot if there is one, else the motif's icon. */
+export default function ProjectScreen({ motif, accent, preview, name }) {
+  if (preview) {
+    return (
+      <div className={`app__screen app__screen--${accent} app__screen--preview`}>
+        <img
+          src={preview}
+          alt={`Screenshot of ${name}`}
+          className="app__screenshot"
+          width="800"
+          height="500"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+    )
+  }
+
   return (
     <div className={`app__screen app__screen--${accent}`} aria-hidden="true">
       {SCREENS[motif] ?? SCREENS.lines}
