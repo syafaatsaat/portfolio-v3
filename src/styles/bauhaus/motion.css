@@ -1,0 +1,35 @@
+/* Bauhaus keyframes (global by nature, so prefixed bh-). Used by the files that reference them. */
+
+@keyframes bh-wipe {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0); }
+}
+
+@keyframes bh-rise {
+  from {
+    opacity: 0;
+    translate: 0 0.6em;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@keyframes bh-spin {
+  to { rotate: 360deg; }
+}
+
+@keyframes bh-drift {
+  from { translate: -10px 0; }
+  to { translate: 10px 0; }
+}
+
+@keyframes bh-bob {
+  from { translate: 0 -12px; }
+  to { translate: 0 12px; }
+}
+
+@keyframes bh-ticker {
+  to { transform: translateX(-50%); }
+}

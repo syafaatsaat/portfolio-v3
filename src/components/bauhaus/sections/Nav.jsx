@@ -1,5 +1,7 @@
+import { useRef } from 'react'
 import { SECTION_IDS } from '../../../data/sections.js'
 import { useActiveSection } from '../../../states/hooks/useActiveSection.js'
+import { useElementBox } from '../../../states/hooks/useElementBox.js'
 import { useMobileMenu } from '../../../states/hooks/useMobileMenu.js'
 import { classNames } from '../../shared/classNames.js'
 
@@ -14,6 +16,8 @@ const LABELS = {
 export default function Nav({ brand }) {
   const activeId = useActiveSection(SECTION_IDS)
   const menu = useMobileMenu()
+  const activeLinkRef = useRef(null)
+  const indicator = useElementBox(activeLinkRef, activeId)
 
   return (
     <header className="site-header">
@@ -36,18 +40,28 @@ export default function Nav({ brand }) {
           {menu.isOpen ? 'Close' : 'Menu'}
         </button>
         <ul id="nav-links" className={classNames('nav__links', menu.isOpen && 'nav__links--open')}>
-          {SECTION_IDS.map((id) => (
-            <li key={id}>
-              <a
-                href={`#${id}`}
-                className={classNames('nav__link', activeId === id && 'nav__link--active')}
-                aria-current={activeId === id ? 'location' : undefined}
-                onClick={menu.close}
-              >
-                {LABELS[id]}
-              </a>
-            </li>
-          ))}
+          {/* Yellow block that slides to whichever link is active */}
+          <li
+            className={classNames('nav__indicator', activeId && indicator && 'nav__indicator--visible')}
+            style={indicator ? { left: indicator.left, width: indicator.width } : undefined}
+            aria-hidden="true"
+          />
+          {SECTION_IDS.map((id) => {
+            const isActive = activeId === id
+            return (
+              <li key={id}>
+                <a
+                  ref={isActive ? activeLinkRef : undefined}
+                  href={`#${id}`}
+                  className={classNames('nav__link', isActive && 'nav__link--active')}
+                  aria-current={isActive ? 'location' : undefined}
+                  onClick={menu.close}
+                >
+                  {LABELS[id]}
+                </a>
+              </li>
+            )
+          })}
         </ul>
       </nav>
     </header>

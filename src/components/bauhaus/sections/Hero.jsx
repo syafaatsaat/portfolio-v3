@@ -1,4 +1,6 @@
+import { useRef } from 'react'
 import { useClock } from '../../../states/hooks/useClock.js'
+import { usePointerParallax } from '../../../states/hooks/usePointerParallax.js'
 import ExternalLink from '../../shared/ExternalLink.jsx'
 import Bento from '../primitives/Bento.jsx'
 import Shape from '../primitives/Shape.jsx'
@@ -8,9 +10,11 @@ const YEAR = new Date().getFullYear()
 
 export default function Hero({ person, cvUrl }) {
   const time = useClock(person.timeZone)
+  const ref = useRef(null)
+  usePointerParallax(ref)
 
   return (
-    <div className="hero wrap">
+    <div ref={ref} className="hero wrap">
       <Bento columns={6}>
         <Tile color="white" span={4} rows={3} className="hero-name">
           <span className="label">Portfolio · {YEAR}</span>
@@ -25,18 +29,18 @@ export default function Hero({ person, cvUrl }) {
         </Tile>
 
         <Tile color="red" span={2} className="hero-art-a" aria-hidden="true">
-          <Shape kind="circle" color="paper" motion="rotate" className="hero-art-a__circle" />
-          <Shape kind="square" color="black" className="hero-art-a__square" />
+          <Shape kind="circle" color="paper" motion="rotate" depth={14} className="hero-art-a__circle" />
+          <Shape kind="square" color="black" idle="spin" depth={8} className="hero-art-a__square" />
         </Tile>
 
         <Tile color="blue" span={2} className="hero-role">
-          <Shape kind="half" color="yellow" motion="rotate" className="hero-role__half" />
+          <Shape kind="half" color="yellow" motion="rotate" depth={10} className="hero-role__half" />
           <span className="label">Role</span>
           <p className="hero-role__title">{person.role}</p>
         </Tile>
 
         <Tile color="yellow" span={1} spanMd={2} spanSm={1} aria-hidden="true">
-          <Shape kind="quarter" color="black" motion="rotate" className="hero-art-b__quarter" />
+          <Shape kind="quarter" color="black" motion="rotate" depth={6} className="hero-art-b__quarter" />
         </Tile>
 
         <Tile color="white" span={1} spanMd={2} spanSm={1} className="hero-clock">
@@ -61,8 +65,8 @@ export default function Hero({ person, cvUrl }) {
         </Tile>
 
         <Tile color="black" span={3} className="hero-art-c" aria-hidden="true">
-          <Shape kind="stripes" color="paper" motion="slide" className="hero-art-c__stripes" />
-          <Shape kind="circle" color="red" className="hero-art-c__circle" />
+          <Shape kind="stripes" color="paper" motion="slide" idle="drift" className="hero-art-c__stripes" />
+          <Shape kind="circle" color="red" depth={18} className="hero-art-c__circle" />
         </Tile>
       </Bento>
     </div>

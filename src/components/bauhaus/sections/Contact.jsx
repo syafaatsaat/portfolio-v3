@@ -21,8 +21,8 @@ export default function Contact({ links, availability }) {
     <Section id="contact" title="Contact">
       <Bento columns={6}>
         <Tile color="red" span={6} className="contact-cta">
-          <Shape kind="circle" color="yellow" motion="rotate" className="contact-cta__sun" />
-          <Shape kind="square" color="blue" className="contact-cta__diamond" />
+          <Shape kind="circle" color="yellow" motion="rotate" idle="bob" className="contact-cta__sun" />
+          <Shape kind="square" color="blue" idle="spin" className="contact-cta__diamond" />
           <p className="contact-cta__title">{availability}. Say hello.</p>
           <a className="contact-cta__email" href={`mailto:${links.email}`}>
             {links.email}

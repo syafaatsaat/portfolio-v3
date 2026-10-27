@@ -7,6 +7,7 @@ import Hero from './sections/Hero.jsx'
 import Nav from './sections/Nav.jsx'
 import Projects from './sections/Projects.jsx'
 import Skills from './sections/Skills.jsx'
+import SkillsTicker from './sections/SkillsTicker.jsx'
 
 /** Main theme: Bento × Bauhaus. Implements the shared Site contract ({ profile, onToggleTheme }). */
 export default function BauhausSite({ profile, onToggleTheme }) {
@@ -19,6 +20,7 @@ export default function BauhausSite({ profile, onToggleTheme }) {
       <Nav brand={person.shortName} />
       <main id="top">
         <Hero person={person} cvUrl={links.cv} />
+        <SkillsTicker groups={skills} />
         <About person={person} education={education} current={currentJob} />
         <Experience items={experience} />
         <Skills groups={skills} />

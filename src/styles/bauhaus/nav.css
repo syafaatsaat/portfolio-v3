@@ -46,10 +46,28 @@
   }
 
   .nav__links {
+    position: relative;
     display: flex;
   }
 
+  .nav__indicator {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    background: var(--yellow);
+    opacity: 0;
+    transition:
+      left 0.35s var(--ease-snap),
+      width 0.35s var(--ease-snap),
+      opacity 0.2s;
+  }
+
+  .nav__indicator--visible { opacity: 1; }
+
   .nav__link {
+    position: relative;
     display: flex;
     align-items: center;
     height: 100%;
@@ -63,9 +81,10 @@
     &:hover { background: var(--black-hover); }
   }
 
+  /* The sliding indicator paints the active background on wide screens */
   .nav__link--active,
   .nav__link--active:hover {
-    background: var(--yellow);
+    background: transparent;
     color: var(--black);
   }
 
@@ -99,9 +118,14 @@
 
     .nav__links--open { display: flex; }
 
+    .nav__indicator { display: none; }
+
     .nav__link {
       padding: 16px 20px;
       border-top: 1px solid var(--black-hover);
     }
+
+    .nav__link--active,
+    .nav__link--active:hover { background: var(--yellow); }
   }
 }

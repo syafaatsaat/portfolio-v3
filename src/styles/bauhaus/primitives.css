@@ -45,6 +45,26 @@
   .bento--cols-4 { grid-template-columns: repeat(4, 1fr); }
   .bento--cols-3 { grid-template-columns: repeat(3, 1fr); }
 
+  /* Reveal: tiles wipe open left to right, one after another (--i = position in the grid) */
+  .bento > :nth-child(2) { --i: 1; }
+  .bento > :nth-child(3) { --i: 2; }
+  .bento > :nth-child(4) { --i: 3; }
+  .bento > :nth-child(5) { --i: 4; }
+  .bento > :nth-child(6) { --i: 5; }
+  .bento > :nth-child(7) { --i: 6; }
+  .bento > :nth-child(8) { --i: 7; }
+  .bento > :nth-child(9) { --i: 8; }
+  .bento > :nth-child(n + 10) { --i: 9; }
+
+  .bento[data-revealed='false'] > .tile {
+    clip-path: inset(0 100% 0 0);
+  }
+
+  .bento[data-revealed='true'] > .tile {
+    animation: bh-wipe var(--duration-reveal) var(--ease-snap) both;
+    animation-delay: calc(var(--i, 0) * var(--stagger));
+  }
+
   /* ---------- Tile ---------- */
   .tile {
     position: relative;
@@ -70,12 +90,27 @@
   .tile--rows-3 { grid-row: span 3; }
 
   /* ---------- Shape ---------- */
+  /*
+   * Each kind of motion owns one CSS property so they combine instead of overriding each other:
+   *   transform → hover  ·  rotate → idle spin  ·  translate → parallax / idle drift & bob  ·  scale → pop-in
+   */
   .shape {
     position: absolute;
     display: block;
     background: var(--shape-color);
-    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    translate: calc(var(--px, 0) * var(--depth, 0) * 1px) calc(var(--py, 0) * var(--depth, 0) * 1px);
+    transition:
+      transform 0.5s var(--ease-snap),
+      translate 0.3s ease-out,
+      scale 0.6s var(--ease-pop) calc(var(--i, 0) * var(--stagger) + 350ms);
   }
+
+  /* Shapes pop in once their tile has started to open */
+  .bento[data-revealed='false'] .shape { scale: 0; }
+
+  .shape--idle-spin { animation: bh-spin 48s linear infinite; }
+  .shape--idle-drift { animation: bh-drift 9s ease-in-out infinite alternate; }
+  .shape--idle-bob { animation: bh-bob 6s ease-in-out infinite alternate; }
 
   .shape--paper { --shape-color: var(--paper); }
   .shape--red { --shape-color: var(--red); }
@@ -93,7 +128,6 @@
 
   .tile:hover .shape--rotate { transform: rotate(90deg); }
   .tile:hover .shape--slide { transform: translateX(16px); }
-
   /* ---------- Responsive ---------- */
   @media (max-width: 960px) {
     .bento--cols-6 { grid-template-columns: repeat(4, 1fr); }

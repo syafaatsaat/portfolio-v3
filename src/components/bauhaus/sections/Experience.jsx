@@ -16,7 +16,7 @@ function Job({ job, color, span, featured }) {
         <span className={classNames('job__period', job.period.isCurrent && 'job__period--current')}>{job.period.formatLong()}</span>
       </div>
       <div className="job__body">
-        {featured && <Shape kind="circle" color="yellow" className="job__sun" />}
+        {featured && <Shape kind="circle" color="yellow" idle="bob" className="job__sun" />}
         <h3 className="job__role">{job.role}</h3>
         {subtitle && <p className="job__org">{subtitle}</p>}
         <ul className="job__bullets">

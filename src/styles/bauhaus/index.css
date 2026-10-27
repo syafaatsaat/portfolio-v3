@@ -1,9 +1,11 @@
 /* Bento × Bauhaus theme. Every rule is scoped to html[data-theme='bauhaus'] or .bauhaus. */
 @import './tokens.css';
+@import './motion.css';
 @import './page.css';
 @import './primitives.css';
 @import './nav.css';
 @import './hero.css';
+@import './ticker.css';
 @import './about.css';
 @import './experience.css';
 @import './skills.css';

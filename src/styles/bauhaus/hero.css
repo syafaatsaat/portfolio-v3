@@ -24,6 +24,17 @@
 
   .hero-name__accent { color: var(--red); }
 
+  /* The three name lines rise in, one after another */
+  .bento[data-revealed='false'] .hero-name__title span { opacity: 0; }
+
+  .bento[data-revealed='true'] .hero-name__title span {
+    animation: bh-rise 0.6s var(--ease-snap) both;
+    animation-delay: 250ms;
+
+    &:nth-child(2) { animation-delay: 340ms; }
+    &:nth-child(3) { animation-delay: 430ms; }
+  }
+
   .hero-name__tagline {
     font-size: 20px;
     max-width: 34ch;

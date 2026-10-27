@@ -1,0 +1,54 @@
+.bauhaus {
+  .ticker {
+    margin-top: 26px;
+    overflow: hidden;
+    background: var(--black);
+    color: var(--paper);
+  }
+
+  .ticker__track {
+    display: flex;
+    width: max-content;
+    animation: bh-ticker 40s linear infinite;
+  }
+
+  .ticker:hover .ticker__track { animation-play-state: paused; }
+
+  .ticker__list {
+    display: flex;
+    flex-shrink: 0;
+    gap: 34px;
+    padding: 14px 34px 14px 0;
+  }
+
+  .ticker__item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    white-space: nowrap;
+    font-weight: 800;
+    font-size: 16px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .ticker__bullet {
+    width: 12px;
+    height: 12px;
+  }
+
+  .ticker__bullet--circle { background: var(--red); border-radius: 50%; }
+  .ticker__bullet--square { background: var(--yellow); }
+  .ticker__bullet--triangle {
+    width: 14px;
+    background: var(--blue);
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  }
+
+  /* Without motion, show one wrapped list instead of a frozen strip */
+  @media (prefers-reduced-motion: reduce) {
+    .ticker__track { width: auto; }
+    .ticker__list { flex-shrink: 1; flex-wrap: wrap; gap: 10px 26px; padding: 14px 20px; }
+    .ticker__list[aria-hidden] { display: none; }
+  }
+}
