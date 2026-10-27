@@ -1,10 +1,30 @@
-/** Placeholder for the SYAF_OS easter-egg theme (built out in Phase 5). */
-export default function CyberSite({ onToggleTheme }) {
+import '../../styles/cyber/index.css'
+import About from './sections/About.jsx'
+import Contact from './sections/Contact.jsx'
+import Desktop from './sections/Desktop.jsx'
+import Experience from './sections/Experience.jsx'
+import Footer from './sections/Footer.jsx'
+import Projects from './sections/Projects.jsx'
+import Skills from './sections/Skills.jsx'
+import Taskbar from './sections/Taskbar.jsx'
+
+/** Easter-egg theme: SYAF_OS (Cybercore × Y2K). Implements the shared Site contract ({ profile, onToggleTheme }). */
+export default function CyberSite({ profile, onToggleTheme }) {
+  const { person, education, experience, skills, projects, projectsNote, links } = profile
+  const fullName = `${person.firstName} ${person.middleName} ${person.lastName}`
+
   return (
-    <div className="theme-fallback">
-      <button type="button" onClick={onToggleTheme}>
-        SYAF_OS coming soon. ⏻ Exit
-      </button>
+    <div className="cyber">
+      <Taskbar timeZone={person.timeZone} timeZoneLabel={person.timeZoneLabel} onExit={onToggleTheme} />
+      <main id="top">
+        <Desktop person={person} cvUrl={links.cv} projectCount={projects.length} />
+        <About person={person} education={education} />
+        <Experience items={experience} />
+        <Skills groups={skills} />
+        <Projects items={projects} note={projectsNote} />
+        <Contact links={links} availability={person.availability} name={person.shortName} />
+      </main>
+      <Footer name={fullName} />
     </div>
   )
 }

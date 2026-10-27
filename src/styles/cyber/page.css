@@ -1,0 +1,85 @@
+html[data-theme='cyber'] body {
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(ellipse at 15% 0%, rgba(255, 43, 214, 0.18), transparent 50%),
+    radial-gradient(ellipse at 90% 30%, rgba(0, 240, 255, 0.14), transparent 45%),
+    linear-gradient(rgba(42, 49, 112, 0.35) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(42, 49, 112, 0.35) 1px, transparent 1px);
+  background-size: auto, auto, 40px 40px, 40px 40px;
+  background-attachment: fixed;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  padding-bottom: var(--taskbar-h);
+
+  /* CRT scanlines over everything */
+  &::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    pointer-events: none;
+    background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.18) 0 1px, transparent 1px 3px);
+    animation: cy-flicker 6s infinite steps(1);
+  }
+
+  @media (max-width: 768px) {
+    padding-bottom: 0;
+    padding-top: var(--taskbar-h);
+  }
+}
+
+@keyframes cy-flicker {
+  0%, 96%, 100% { opacity: 0.55; }
+  97% { opacity: 0.8; }
+  98% { opacity: 0.4; }
+}
+
+@keyframes cy-blink {
+  50% { opacity: 0; }
+}
+
+.cyber {
+  :focus-visible {
+    outline: 2px solid var(--lime);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: var(--magenta);
+    color: #fff;
+  }
+
+  .wrap {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 22px;
+  }
+
+  .section {
+    scroll-margin-top: 24px;
+    padding: 40px 0;
+  }
+
+  .cursor {
+    display: inline-block;
+    width: 9px;
+    height: 1.1em;
+    background: var(--lime);
+    vertical-align: -3px;
+    animation: cy-blink 1s steps(2) infinite;
+  }
+
+  .footer {
+    padding: 50px 22px 30px;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--mute);
+  }
+
+  @media (max-width: 768px) {
+    .section { scroll-margin-top: calc(var(--taskbar-h) + 16px); }
+  }
+}

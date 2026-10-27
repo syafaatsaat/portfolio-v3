@@ -1,0 +1,92 @@
+.cyber {
+  .apps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 26px;
+  }
+
+  .app {
+    display: flex;
+    flex-direction: column;
+
+    /* staggered like windows dropped on a desktop */
+    &:nth-child(2) { transform: translateY(26px); }
+  }
+
+  .app__menu {
+    display: flex;
+    gap: 14px;
+    padding: 6px 14px;
+    border-bottom: 1px solid var(--line);
+    background: var(--panel-2);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--mute);
+
+    span::first-letter { text-decoration: underline; }
+  }
+
+  .app__screen {
+    position: relative;
+    display: grid;
+    place-items: center;
+    height: 150px;
+    overflow: hidden;
+    border-bottom: 1px solid var(--line);
+
+    svg { width: 96px; height: 96px; }
+  }
+
+  .app__screen--magenta { background: radial-gradient(circle at 30% 30%, rgba(0, 240, 255, 0.35), transparent 60%), #070a1c; }
+  .app__screen--cyan { background: radial-gradient(circle at 70% 30%, rgba(255, 43, 214, 0.35), transparent 60%), #070a1c; }
+  .app__screen--lime { background: radial-gradient(circle at 50% 70%, rgba(182, 255, 59, 0.28), transparent 60%), #070a1c; }
+
+  .app__body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+    padding: 20px;
+
+    .gloss { align-self: flex-start; margin-top: 6px; }
+  }
+
+  .app__name {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 1.2;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  .app__description {
+    flex: 1;
+    font-size: 15px;
+    color: #c3cbee;
+  }
+
+  .app__meta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--mute);
+  }
+
+  .apps__note {
+    margin-top: 48px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--mute);
+  }
+
+  @media (max-width: 960px) {
+    .apps {
+      grid-template-columns: 1fr;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .app:nth-child(2) { transform: none; }
+    .apps__note { margin-top: 24px; text-align: center; }
+  }
+}

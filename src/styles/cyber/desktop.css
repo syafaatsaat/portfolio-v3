@@ -1,0 +1,126 @@
+.cyber {
+  .desktop {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 30px;
+    align-items: center;
+    min-height: min(calc(100vh - var(--taskbar-h)), 860px);
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  /* Shortcut icons */
+  .desktop__icons {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    align-self: start;
+    padding-top: 10px;
+  }
+
+  .desktop__icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 4px;
+    border: 1px dashed transparent;
+    border-radius: 6px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-align: center;
+
+    &:hover {
+      border-color: var(--cyan);
+      background: rgba(0, 240, 255, 0.08);
+    }
+
+    svg {
+      width: 44px;
+      height: 44px;
+      filter: drop-shadow(0 0 6px rgba(0, 240, 255, 0.35));
+    }
+  }
+
+  /* Welcome window */
+  .desktop__body { padding: 34px; }
+
+  .desktop__sticker {
+    position: absolute;
+    right: 26px;
+    top: 64px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: var(--lime);
+    color: var(--ink);
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    transform: rotate(8deg);
+    box-shadow: 3px 3px 0 var(--magenta);
+  }
+
+  .boot {
+    min-height: 6.6em;
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: var(--lime);
+    white-space: pre-wrap;
+  }
+
+  .boot__ok { color: var(--cyan); }
+
+  .desktop__name {
+    margin: 18px 0 20px;
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(36px, 7vw, 92px);
+    line-height: 0.95;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+
+    small {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.42em;
+      letter-spacing: 0.12em;
+    }
+  }
+
+  .desktop__lead {
+    max-width: 54ch;
+    font-size: 18px;
+    color: var(--text-soft);
+  }
+
+  .desktop__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-top: 28px;
+  }
+
+  @media (max-width: 768px) {
+    .desktop {
+      grid-template-columns: 1fr;
+      min-height: 0;
+    }
+
+    .desktop__icons {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding-top: 0;
+    }
+
+    .desktop__icon {
+      width: 64px;
+
+      svg { width: 36px; height: 36px; }
+    }
+
+    .desktop__sticker { display: none; }
+    .desktop__body { padding: 20px; }
+  }
+}

@@ -1,20 +1,8 @@
+import Highlight from '../../shared/Highlight.jsx'
 import Bento from '../primitives/Bento.jsx'
 import Section from '../primitives/Section.jsx'
 import Shape from '../primitives/Shape.jsx'
 import Tile from '../primitives/Tile.jsx'
-
-/** Wraps the first occurrence of `phrase` in <mark>. */
-function highlight(text, phrase) {
-  const index = phrase ? text.indexOf(phrase) : -1
-  if (index === -1) return text
-  return (
-    <>
-      {text.slice(0, index)}
-      <mark>{phrase}</mark>
-      {text.slice(index + phrase.length)}
-    </>
-  )
-}
 
 function Fact({ color, label, title, text }) {
   return (
@@ -32,7 +20,9 @@ export default function About({ person, education, current }) {
       <Bento columns={6}>
         <Tile color="white" span={4} rows={2} className="about-bio">
           {person.about.map((paragraph) => (
-            <p key={paragraph}>{highlight(paragraph, person.aboutHighlight)}</p>
+            <p key={paragraph}>
+              <Highlight text={paragraph} phrase={person.aboutHighlight} />
+            </p>
           ))}
         </Tile>
 

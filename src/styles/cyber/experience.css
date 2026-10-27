@@ -1,0 +1,64 @@
+.cyber {
+  .terminal {
+    padding: 26px;
+    background: var(--terminal);
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: #cfd7ff;
+  }
+
+  .terminal__prompt { color: var(--lime); }
+  .terminal__idle { margin-top: 18px; }
+
+  .log-entry {
+    padding: 18px 0;
+    border-bottom: 1px dashed var(--line);
+
+    &:last-of-type { border-bottom: 0; padding-bottom: 0; }
+  }
+
+  .log-entry__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 14px;
+  }
+
+  .log-entry__time { color: var(--cyan); }
+  .log-entry__time--now { color: var(--lime); }
+
+  .log-entry__role {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 19px;
+    color: var(--text);
+  }
+
+  .log-entry__org { color: var(--magenta); }
+
+  .log-entry__lines {
+    margin-top: 10px;
+
+    li {
+      position: relative;
+      margin-top: 6px;
+      padding-left: 28px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: #c3cbee;
+    }
+
+    li::before {
+      content: '>>';
+      position: absolute;
+      left: 0;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--cyan);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .terminal { padding: 20px; }
+  }
+}

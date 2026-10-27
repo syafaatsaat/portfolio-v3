@@ -1,0 +1,19 @@
+html[data-theme='cyber'] {
+  --bg: #05060f;
+  --panel: #0c0f24;
+  --panel-2: #121636;
+  --terminal: #03040a;
+  --ink: #0b0e26;
+  --cyan: #00f0ff;
+  --magenta: #ff2bd6;
+  --lime: #b6ff3b;
+  --text: #e6ecff;
+  --text-soft: #c9d2f5;
+  --mute: #9aa3c7;
+  --line: #2a3170;
+  --chrome: linear-gradient(180deg, #fff 0%, #dde4f2 22%, #8d97b5 46%, #f5f7ff 54%, #b3bcd6 74%, #6e7899 100%);
+  --taskbar-h: 52px;
+  --font-display: 'Orbitron', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+  --font-body: 'Inter', system-ui, sans-serif;
+}

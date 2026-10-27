@@ -1,0 +1,13 @@
+/* SYAF_OS (Cybercore × Y2K) easter-egg theme. Every rule is scoped to html[data-theme='cyber'] or .cyber.
+   Fonts are imported here so they only download when this theme is opened. */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap');
+@import './tokens.css';
+@import './page.css';
+@import './primitives.css';
+@import './taskbar.css';
+@import './desktop.css';
+@import './about.css';
+@import './experience.css';
+@import './skills.css';
+@import './projects.css';
+@import './contact.css';
