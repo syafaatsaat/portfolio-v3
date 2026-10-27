@@ -33,7 +33,7 @@
     position: relative;
     display: grid;
     place-items: center;
-    height: 150px;
+    aspect-ratio: 16 / 10; /* the screenshots' shape, so the whole page shows */
     overflow: hidden;
     border-bottom: 1px solid var(--line);
 
