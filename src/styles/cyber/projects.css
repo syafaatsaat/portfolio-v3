@@ -48,8 +48,24 @@
     gap: 10px;
     flex: 1;
     padding: 20px;
+  }
 
-    .gloss { align-self: flex-start; margin-top: 6px; }
+  .app__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 6px;
+  }
+
+  .app__source {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--cyan);
+    text-underline-offset: 3px;
+
+    &:hover { text-decoration: underline; }
   }
 
   .app__name {

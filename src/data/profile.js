@@ -103,11 +103,13 @@ export const skills = [
 ]
 
 /** motif: which illustration a theme draws for the project ('lines' | 'card' | 'tiles') */
+// liveUrl: deployed app; leave null to show only the source link
 export const projects = [
   {
     id: 'linework',
     name: 'Linework',
-    url: 'https://github.com/syafaatsaat/linework',
+    sourceUrl: 'https://github.com/syafaatsaat/linework',
+    liveUrl: 'https://linework-delta.vercel.app/',
     category: 'Web · Client-side',
     description: 'A CV builder that runs entirely in the browser, so user data never leaves the device.',
     motif: 'lines',
@@ -115,7 +117,8 @@ export const projects = [
   {
     id: 'holo-vault',
     name: 'Holo Vault',
-    url: 'https://github.com/syafaatsaat/holo-vault',
+    sourceUrl: 'https://github.com/syafaatsaat/holo-vault',
+    liveUrl: null,
     category: 'React · Commerce',
     description: 'A React shopping app for Pokémon TCG singles, priced at market value.',
     motif: 'card',
@@ -123,7 +126,8 @@ export const projects = [
   {
     id: 'memory-legends',
     name: 'Memory Legends: See See',
-    url: 'https://github.com/syafaatsaat/memory-legends-see-see',
+    sourceUrl: 'https://github.com/syafaatsaat/memory-legends-see-see',
+    liveUrl: null,
     category: 'Web · Game',
     description: 'A hero memory game for Mobile Legends: Bang Bang fans.',
     motif: 'tiles',

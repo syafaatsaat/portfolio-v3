@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import { useClock } from '../../../states/hooks/useClock.js'
 import { usePointerParallax } from '../../../states/hooks/usePointerParallax.js'
 import ExternalLink from '../../shared/ExternalLink.jsx'
+import ArrowIcon from '../primitives/ArrowIcon.jsx'
 import Bento from '../primitives/Bento.jsx'
 import Shape from '../primitives/Shape.jsx'
 import Tile from '../primitives/Tile.jsx'
@@ -58,8 +59,8 @@ export default function Hero({ person, cvUrl }) {
               <br />
               my CV
             </span>
-            <span className="hero-cv__arrow" aria-hidden="true">
-              ↓
+            <span className="hero-cv__arrow">
+              <ArrowIcon direction="down" />
             </span>
           </span>
         </Tile>

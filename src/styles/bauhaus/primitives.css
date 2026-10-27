@@ -155,4 +155,12 @@
     .tile { padding: 22px; }
     .tile--flush { padding: 0; }
   }
+
+  /* ---------- Arrow icon ---------- */
+  .arrow-icon {
+    width: 1.25em;
+    height: 1.25em;
+    flex-shrink: 0;
+    transition: transform 0.2s;
+  }
 }

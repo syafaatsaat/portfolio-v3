@@ -1,5 +1,6 @@
 import { toFileName } from '../primitives/fileName.js'
 import ChromeHeading from '../primitives/ChromeHeading.jsx'
+import ExternalLink from '../../shared/ExternalLink.jsx'
 import GlossButton from '../primitives/GlossButton.jsx'
 import Section from '../primitives/Section.jsx'
 import Window from '../primitives/Window.jsx'
@@ -35,9 +36,26 @@ export default function Projects({ items, note }) {
                 <h3 className="app__name">{project.name}</h3>
                 <p className="app__description">{project.description}</p>
                 <span className="app__meta">// {project.category.toLowerCase()}</span>
-                <GlossButton href={project.url} external variant={style.button} size="sm">
-                  Launch ↗
-                </GlossButton>
+                <div className="app__actions">
+                  {project.liveUrl && (
+                    <GlossButton
+                      href={project.liveUrl}
+                      external
+                      variant={style.button}
+                      size="sm"
+                      aria-label={`${project.name}, live app`}
+                    >
+                      Launch ↗
+                    </GlossButton>
+                  )}
+                  <ExternalLink
+                    href={project.sourceUrl}
+                    className="app__source"
+                    aria-label={`${project.name}, source code on GitHub`}
+                  >
+                    view source →
+                  </ExternalLink>
+                </div>
               </div>
             </Window>
           )

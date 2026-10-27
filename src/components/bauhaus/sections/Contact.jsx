@@ -1,16 +1,18 @@
 import ExternalLink from '../../shared/ExternalLink.jsx'
+import ArrowIcon from '../primitives/ArrowIcon.jsx'
 import Bento from '../primitives/Bento.jsx'
 import Section from '../primitives/Section.jsx'
 import Shape from '../primitives/Shape.jsx'
 import Tile from '../primitives/Tile.jsx'
 
+/** @param {'up-right'|'down'} arrow  direction of the arrow icon */
 function LinkTile({ href, color, name, value, arrow }) {
   return (
     <Tile as={ExternalLink} href={href} color={color} span={2} className="contact-link">
       <span className="contact-link__name">{name}</span>
       <span className="contact-link__value">{value}</span>
-      <span className="contact-link__arrow" aria-hidden="true">
-        {arrow}
+      <span className="contact-link__arrow">
+        <ArrowIcon direction={arrow} />
       </span>
     </Tile>
   )
@@ -28,9 +30,9 @@ export default function Contact({ links, availability }) {
             {links.email}
           </a>
         </Tile>
-        <LinkTile href={links.linkedin.url} color="white" name="LinkedIn" value={links.linkedin.label} arrow="↗" />
-        <LinkTile href={links.github.url} color="yellow" name="GitHub" value={links.github.label} arrow="↗" />
-        <LinkTile href={links.cv} color="blue" name="Résumé" value="PDF download" arrow="↓" />
+        <LinkTile href={links.linkedin.url} color="white" name="LinkedIn" value={links.linkedin.label} arrow="up-right" />
+        <LinkTile href={links.github.url} color="yellow" name="GitHub" value={links.github.label} arrow="up-right" />
+        <LinkTile href={links.cv} color="blue" name="Résumé" value="PDF download" arrow="down" />
       </Bento>
     </Section>
   )

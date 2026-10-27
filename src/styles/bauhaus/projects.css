@@ -32,9 +32,10 @@
 
   .project__description { flex: 1; }
 
-  .project__cta {
+  .project__links {
     display: flex;
     justify-content: space-between;
+    gap: 16px;
     padding-top: 12px;
     border-top: 2px solid currentColor;
     font-weight: 800;
@@ -43,8 +44,22 @@
     letter-spacing: 0.1em;
   }
 
-  .project__cta-arrow { transition: transform 0.2s; }
-  .project:hover .project__cta-arrow { transform: translateX(6px); }
+  .project__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* Only the words underline; the icon never does */
+  .project__link-label { text-underline-offset: 4px; }
+
+  .project__link:hover .project__link-label {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+  }
+
+  .project__link:hover .arrow-icon--right { transform: translateX(6px); }
+  .project__link:hover .arrow-icon--up-right { transform: translate(4px, -4px); }
 
   .projects-note { margin-top: 14px; }
 

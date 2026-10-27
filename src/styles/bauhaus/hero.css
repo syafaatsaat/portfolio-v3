@@ -110,13 +110,13 @@
     line-height: 1.05;
   }
 
+  /* Sizes the arrow icon (1.25em) */
   .hero-cv__arrow {
-    font-size: 44px;
-    line-height: 1;
-    transition: transform 0.2s;
+    display: flex;
+    font-size: 28px;
   }
 
-  .hero-cv:hover .hero-cv__arrow { transform: translateY(6px); }
+  .hero-cv:hover .arrow-icon { transform: translateY(6px); }
 
   @media (max-width: 560px) {
     .hero-name {
