@@ -1,0 +1,107 @@
+.bauhaus {
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    background: var(--black);
+    color: #fff;
+  }
+
+  .nav {
+    position: relative;
+    height: var(--nav-h);
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+  }
+
+  .nav__brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 900;
+    font-size: 20px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .nav__mark {
+    display: flex;
+    gap: 3px;
+    align-items: center;
+
+    i {
+      display: block;
+      width: 14px;
+      height: 14px;
+    }
+
+    i:nth-child(1) { background: var(--red); border-radius: 50%; }
+    i:nth-child(2) { background: var(--yellow); }
+    i:nth-child(3) {
+      width: 16px;
+      background: var(--blue);
+      clip-path: polygon(50% 0, 100% 100%, 0 100%);
+    }
+  }
+
+  .nav__links {
+    display: flex;
+  }
+
+  .nav__link {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 20px;
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    transition: background 0.15s, color 0.15s;
+
+    &:hover { background: var(--black-hover); }
+  }
+
+  .nav__link--active,
+  .nav__link--active:hover {
+    background: var(--yellow);
+    color: var(--black);
+  }
+
+  .nav__burger {
+    display: none;
+    align-self: center;
+    background: var(--yellow);
+    color: var(--black);
+    border: 0;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 10px 16px;
+    cursor: pointer;
+  }
+
+  @media (max-width: 768px) {
+    .nav__burger { display: block; }
+
+    .nav__links {
+      display: none;
+      position: absolute;
+      top: var(--nav-h);
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      background: var(--black);
+      padding-bottom: 8px;
+    }
+
+    .nav__links--open { display: flex; }
+
+    .nav__link {
+      padding: 16px 20px;
+      border-top: 1px solid var(--black-hover);
+    }
+  }
+}

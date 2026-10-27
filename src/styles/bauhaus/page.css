@@ -1,0 +1,27 @@
+html[data-theme='bauhaus'] body {
+  background: var(--paper);
+  color: var(--black);
+  font-family: var(--font);
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.bauhaus {
+  :focus-visible {
+    outline: 4px solid var(--yellow);
+    outline-offset: -4px;
+  }
+
+  .wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .label {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+  }
+}

@@ -1,0 +1,47 @@
+.bauhaus {
+  .about-bio {
+    p {
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 1.45;
+    }
+
+    p + p {
+      margin-top: 16px;
+      font-size: 18px;
+      font-weight: 400;
+    }
+
+    mark {
+      background: var(--yellow);
+      color: inherit;
+      padding: 0 4px;
+    }
+  }
+
+  /* Abstract portrait built from shapes */
+  .about-portrait { min-height: 300px; }
+  .about-portrait__head { width: 58%; aspect-ratio: 1; left: 12%; top: 12%; }
+  .about-portrait__body { width: 40%; aspect-ratio: 1; right: 10%; bottom: 12%; }
+  .about-portrait__triangle { width: 80px; height: 70px; left: 14%; bottom: 12%; }
+  .about-portrait__eye { width: 12%; aspect-ratio: 1; left: 32%; top: 30%; }
+
+  /* Fact tiles */
+  .fact .label {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .fact__title {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1.15;
+    text-transform: uppercase;
+  }
+
+  .fact__text { margin-top: 6px; }
+
+  @media (max-width: 560px) {
+    .about-portrait { min-height: 240px; }
+  }
+}

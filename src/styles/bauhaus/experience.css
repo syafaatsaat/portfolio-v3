@@ -1,0 +1,74 @@
+.bauhaus {
+  .job {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .job__band {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 4px 12px;
+    padding: 12px 26px;
+    background: var(--black);
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .job__period { white-space: nowrap; }
+  .job__period--current { color: var(--yellow); }
+
+  .job__body {
+    position: relative;
+    flex: 1;
+    padding: 24px 26px 28px;
+  }
+
+  .job__sun { width: 200px; height: 200px; right: -60px; bottom: -80px; }
+
+  .job__role {
+    font-size: 26px;
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1.05;
+  }
+
+  .job__org {
+    font-weight: 700;
+    margin-top: 6px;
+  }
+
+  .job__bullets {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 16px;
+
+    li {
+      position: relative;
+      padding-left: 24px;
+    }
+
+    /* Bullet shape follows the tile color: square, circle or triangle */
+    li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.5em;
+      width: 10px;
+      height: 10px;
+      background: currentColor;
+    }
+  }
+
+  .tile--blue .job__bullets li::before { border-radius: 50%; }
+  .tile--red .job__bullets li::before {
+    width: 12px;
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  }
+}

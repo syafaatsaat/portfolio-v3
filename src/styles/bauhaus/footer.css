@@ -1,0 +1,40 @@
+.bauhaus {
+  .site-footer {
+    margin-top: 56px;
+    background: var(--black);
+    color: #fff;
+  }
+
+  .site-footer__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+    padding-top: 22px;
+    padding-bottom: 22px;
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+  }
+
+  /* Easter egg: switches to the SYAF_OS theme */
+  .site-footer__egg {
+    padding: 6px 12px;
+    border: 2px solid var(--yellow);
+    background: transparent;
+    color: var(--yellow);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+
+    &:hover {
+      background: var(--yellow);
+      color: var(--black);
+    }
+  }
+}

@@ -1,0 +1,69 @@
+.bauhaus {
+  .project {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project__art {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+    border-bottom: var(--gut) solid var(--black);
+  }
+
+  .project__art--blue { background: var(--blue); }
+  .project__art--red { background: var(--red); }
+  .project__art--yellow { background: var(--yellow); }
+
+  .project__info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+    padding: 24px 26px 28px;
+  }
+
+  .project__name {
+    font-size: 26px;
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 1.05;
+  }
+
+  .project__description { flex: 1; }
+
+  .project__cta {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 12px;
+    border-top: 2px solid currentColor;
+    font-weight: 800;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .project__cta-arrow { transition: transform 0.2s; }
+  .project:hover .project__cta-arrow { transform: translateX(6px); }
+
+  .projects-note { margin-top: 14px; }
+
+  /* ---------- Project artwork ---------- */
+  .art-lines {
+    inset: 30px;
+    background: repeating-linear-gradient(0deg, var(--shape-color) 0 8px, transparent 8px 26px);
+  }
+
+  .art-card__card { width: 110px; height: 150px; left: 50%; top: 50%; margin: -75px 0 0 -55px; }
+  .art-card__dot { width: 70px; height: 70px; left: 50%; top: 50%; margin: -35px 0 0 -35px; }
+
+  .art-tiles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    height: 100%;
+    padding: 30px 60px;
+  }
+
+  .art-tiles__cell { position: relative; }
+}

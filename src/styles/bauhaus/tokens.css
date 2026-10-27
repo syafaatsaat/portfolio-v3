@@ -1,0 +1,16 @@
+html[data-theme='bauhaus'] {
+  --paper: #f3ede2;
+  --paper-light: #fbf8f2;
+  --red: #e63322;
+  --blue: #1f4fbf;
+  --yellow: #f6c21b;
+  --black: #141414;
+  --black-hover: #2a2a2a;
+  --gut: 10px;
+  --nav-h: 64px;
+  --font: 'Jost', system-ui, sans-serif;
+
+  @media (max-width: 560px) {
+    --gut: 8px;
+  }
+}
