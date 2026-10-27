@@ -4,14 +4,22 @@
     flex-direction: column;
   }
 
+  /* The band is a deeper shade of its tile, so it stands apart from the black border */
+  .job.tile--white { --band-bg: var(--paper-deep); --band-fg: var(--black); }
+  .job.tile--blue { --band-bg: var(--blue-deep); --band-fg: #fff; }
+  .job.tile--red { --band-bg: var(--red-deep); --band-fg: #fff; }
+
   .job__band {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 4px 12px;
-    padding: 12px 26px;
-    background: var(--black);
-    color: #fff;
+    /* Starts 1px above the tile's clipped edge, so the light tile background
+       can't bleed through as a seam when the tile lands on a fractional pixel */
+    margin-top: -1px;
+    padding: 13px 26px 12px;
+    background: var(--band-bg);
+    color: var(--band-fg);
     font-weight: 700;
     font-size: 14px;
     letter-spacing: 0.12em;
@@ -19,7 +27,18 @@
   }
 
   .job__period { white-space: nowrap; }
-  .job__period--current { color: var(--yellow); }
+
+  /* Red dot marks the current role */
+  .job__period--current::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin-right: 8px;
+    border-radius: 50%;
+    background: var(--red);
+    vertical-align: 0.1em;
+  }
 
   .job__body {
     position: relative;

@@ -6,6 +6,11 @@ html[data-theme='bauhaus'] {
   --yellow: #f6c21b;
   --black: #141414;
   --black-hover: #2a2a2a;
+
+  /* Deeper shades of the tile colours, for bands that sit on a tile */
+  --paper-deep: #e4dccd;
+  --blue-deep: color-mix(in srgb, var(--blue) 65%, black);
+  --red-deep: color-mix(in srgb, var(--red) 70%, black);
   --gut: 10px;
   --nav-h: 64px;
   --font: 'Jost', system-ui, sans-serif;
