@@ -105,8 +105,8 @@
   @media (max-width: 768px) {
     .nav__burger { display: block; }
 
+    /* Closed: collapsed upwards and hidden (out of the tab order once the wipe ends) */
     .nav__links {
-      display: none;
       position: absolute;
       top: var(--nav-h);
       left: 0;
@@ -114,9 +114,45 @@
       flex-direction: column;
       background: var(--black);
       padding-bottom: 8px;
+      visibility: hidden;
+      clip-path: inset(0 0 100% 0);
+      transition:
+        clip-path 0.22s ease-in,
+        visibility 0s linear 0.22s;
     }
 
-    .nav__links--open { display: flex; }
+    /* Open: the panel wipes down */
+    .nav__links--open {
+      visibility: visible;
+      clip-path: inset(0);
+      transition:
+        clip-path 0.4s var(--ease-snap),
+        visibility 0s;
+    }
+
+    /* Links slide in one after another (the first li is the hidden indicator) */
+    .nav__links > li {
+      opacity: 0;
+      translate: -24px 0;
+      transition:
+        opacity 0.2s,
+        translate 0.2s;
+    }
+
+    .nav__links > li:nth-child(2) { --i: 0; }
+    .nav__links > li:nth-child(3) { --i: 1; }
+    .nav__links > li:nth-child(4) { --i: 2; }
+    .nav__links > li:nth-child(5) { --i: 3; }
+    .nav__links > li:nth-child(6) { --i: 4; }
+
+    .nav__links--open > li {
+      opacity: 1;
+      translate: 0;
+      transition:
+        opacity 0.35s var(--ease-snap),
+        translate 0.35s var(--ease-snap);
+      transition-delay: calc(80ms + var(--i, 0) * 45ms);
+    }
 
     .nav__indicator { display: none; }
 
