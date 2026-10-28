@@ -41,23 +41,26 @@ export default function HeroName({ person, editions }) {
         <div className="hero-name__face hero-name__face--front" inert={isFlipped}>
           <div className="hero-name__versions" role="group" aria-label="Portfolio versions">
             <span className="label">Portfolio ·</span>
-            {editions.map(({ id }) => (
-              <button
-                key={id}
-                ref={(node) => {
-                  switchRefs.current[id] = node
-                }}
-                type="button"
-                className="hero-name__version"
-                aria-pressed={false}
-                onClick={() => showEdition(id)}
-              >
-                {id}
+            {/* The buttons wrap as one group, never splitting across lines */}
+            <span className="hero-name__version-list">
+              {editions.map(({ id }) => (
+                <button
+                  key={id}
+                  ref={(node) => {
+                    switchRefs.current[id] = node
+                  }}
+                  type="button"
+                  className="hero-name__version"
+                  aria-pressed={false}
+                  onClick={() => showEdition(id)}
+                >
+                  {id}
+                </button>
+              ))}
+              <button type="button" className="hero-name__version" aria-pressed={true}>
+                {current} · {YEAR}
               </button>
-            ))}
-            <button type="button" className="hero-name__version" aria-pressed={true}>
-              {current} · {YEAR}
-            </button>
+            </span>
           </div>
           <div>
             <h1 className="hero-name__title">

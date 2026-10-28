@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useClock } from '../../../states/hooks/useClock.js'
 import { useExitAnimation } from '../../../states/hooks/useExitAnimation.js'
 import { usePointerParallax } from '../../../states/hooks/usePointerParallax.js'
@@ -9,6 +9,9 @@ import Bento from '../primitives/Bento.jsx'
 import Shape from '../primitives/Shape.jsx'
 import Tile from '../primitives/Tile.jsx'
 import HeroName from './HeroName.jsx'
+
+// How long a tapped power button stays armed before the words wipe back into stripes
+const ARMED_MS = 4000
 
 function PowerIcon() {
   return (
@@ -22,6 +25,32 @@ export default function Hero({ person, cvUrl, editions, onBoot }) {
   const time = useClock(person.timeZone)
   // The stripes collapse into a scanline first; the theme switches once that ends
   const powerOff = useExitAnimation(onBoot)
+  // Touch screens can't hover to reveal the words, so the first tap shows them and the second boots
+  const [isArmed, setIsArmed] = useState(false)
+  const knobRef = useRef(null)
+
+  useEffect(() => {
+    if (!isArmed) return undefined
+    const timer = setTimeout(() => setIsArmed(false), ARMED_MS)
+    const disarmOutside = (event) => {
+      if (!knobRef.current?.contains(event.target)) setIsArmed(false)
+    }
+    document.addEventListener('pointerdown', disarmOutside)
+    return () => {
+      clearTimeout(timer)
+      document.removeEventListener('pointerdown', disarmOutside)
+    }
+  }, [isArmed])
+
+  const handlePowerClick = (event) => {
+    // event.detail is 0 for keyboard presses, which already show the words on focus
+    const canHover = window.matchMedia('(hover: hover)').matches
+    if (!canHover && event.detail > 0 && !isArmed) {
+      setIsArmed(true)
+      return
+    }
+    powerOff.start()
+  }
   const ref = useRef(null)
   usePointerParallax(ref)
 
@@ -70,20 +99,26 @@ export default function Hero({ person, cvUrl, editions, onBoot }) {
         <Tile
           color="black"
           span={3}
-          className={classNames('hero-art-c', 'hero-power', powerOff.isLeaving && 'hero-power--booting')}
+          className={classNames(
+            'hero-art-c',
+            'hero-power',
+            isArmed && 'hero-power--armed',
+            powerOff.isLeaving && 'hero-power--booting',
+          )}
           onAnimationEnd={powerOff.handleAnimationEnd}
         >
           <Shape kind="stripes" color="paper" motion="slide" idle="drift" className="hero-art-c__stripes" />
-          {/* The stripes turn into these words while the button is hovered or focused */}
+          {/* The stripes turn into these words while the button is hovered, focused or armed by a tap */}
           <span className="hero-power__text" aria-hidden="true">
             <span>▶ Boot</span>
             <span>SYAF_OS</span>
           </span>
           <button
+            ref={knobRef}
             type="button"
             className="hero-power__knob"
             aria-label="Boot SYAF_OS, switch to the retro desktop theme"
-            onClick={powerOff.start}
+            onClick={handlePowerClick}
             disabled={powerOff.isLeaving}
           >
             <PowerIcon />

@@ -47,6 +47,11 @@
     gap: 6px;
   }
 
+  .hero-name__version-list {
+    display: flex;
+    gap: 6px;
+  }
+
   .hero-name__version {
     padding: 3px 9px;
     border: 2px solid var(--black);
@@ -221,10 +226,21 @@
       scale 0.6s var(--ease-pop) calc(var(--i, 0) * var(--stagger) + 350ms);
   }
 
-  /* Left-to-right wipe: the stripes clip away as the words clip in behind the same edge */
-  .hero-power:has(.hero-power__knob:is(:hover, :focus-visible)) {
+  /*
+   * Left-to-right wipe: the stripes clip away as the words clip in behind the same edge.
+   * Triggered by keyboard focus, a first tap on touch screens (--armed), or hover on devices
+   * that really hover, so a phone's leftover tap-hover can't show the words. Never while booting.
+   */
+  .hero-power:not(.hero-power--booting):is(.hero-power--armed, :has(.hero-power__knob:focus-visible)) {
     .hero-art-c__stripes { clip-path: inset(0 0 0 100%); }
     .hero-power__text { clip-path: inset(0); }
+  }
+
+  @media (hover: hover) {
+    .hero-power:not(.hero-power--booting):has(.hero-power__knob:hover) {
+      .hero-art-c__stripes { clip-path: inset(0 0 0 100%); }
+      .hero-power__text { clip-path: inset(0); }
+    }
   }
 
   /* Booting. The tile's own animation is the one that ends the exit, so it outranks the reveal wipe. */
@@ -233,7 +249,7 @@
     animation-delay: 0ms;
   }
 
-  /* Booting wins over hover: the stripes come back for the squash and the words go */
+  /* Booting: the stripes come back for the squash and the words go */
   .hero-power.hero-power--booting {
     .hero-art-c__stripes {
       clip-path: inset(0);
