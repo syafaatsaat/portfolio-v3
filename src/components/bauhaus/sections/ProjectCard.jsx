@@ -22,14 +22,16 @@ export default function ProjectCard({ project }) {
               <ArrowIcon direction="up-right" />
             </ExternalLink>
           )}
-          <ExternalLink
-            href={project.sourceUrl}
-            className="project__link"
-            aria-label={`${project.name}, source code on GitHub`}
-          >
-            <span className="project__link-label">Source</span>
-            <ArrowIcon direction="right" />
-          </ExternalLink>
+          {project.sourceUrl && (
+            <ExternalLink
+              href={project.sourceUrl}
+              className="project__link"
+              aria-label={`${project.name}, source code on GitHub`}
+            >
+              <span className="project__link-label">Source</span>
+              <ArrowIcon direction="right" />
+            </ExternalLink>
+          )}
         </div>
       </div>
     </Tile>

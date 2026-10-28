@@ -42,14 +42,16 @@ export default function ProjectApp({ project, index }) {
               Launch <ArrowIcon direction="up-right" />
             </GlossButton>
           )}
-          <ExternalLink
-            href={project.sourceUrl}
-            className="app__source"
-            aria-label={`${project.name}, source code on GitHub`}
-          >
-            <span className="app__source-label">view source</span>
-            <ArrowIcon direction="right" />
-          </ExternalLink>
+          {project.sourceUrl && (
+            <ExternalLink
+              href={project.sourceUrl}
+              className="app__source"
+              aria-label={`${project.name}, source code on GitHub`}
+            >
+              <span className="app__source-label">view source</span>
+              <ArrowIcon direction="right" />
+            </ExternalLink>
+          )}
         </div>
       </div>
     </Window>

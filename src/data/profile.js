@@ -103,8 +103,10 @@ export const skills = [
 ]
 
 /** motif: which illustration and colour a theme draws for the project ('lines' | 'card' | 'tiles' | 'grid') */
-// liveUrl: deployed app; leave null to show only the source link
-// preview: screenshot in /public/projects; leave null to show the illustrated art
+// kind: 'web' (live app), 'data' (pipeline, source only) or 'game' (school game or simulation, video only)
+// sourceUrl / liveUrl: leave null to hide that link
+// preview: image in /public/projects (screenshot, topic image or video thumbnail); null shows the illustrated art
+// video: games only; a YouTube link or a file in /public/projects, played in a pop-up
 // featured: shown on the home page; every project is listed on /projects
 export const projects = [
   {
@@ -116,6 +118,7 @@ export const projects = [
     category: 'Web · Client-side',
     description: 'A CV builder that runs entirely in the browser, so user data never leaves the device.',
     motif: 'lines',
+    kind: 'web',
     featured: true,
   },
   {
@@ -127,6 +130,7 @@ export const projects = [
     category: 'React · Commerce',
     description: 'A React shopping app for Pokémon TCG singles, priced at market value.',
     motif: 'card',
+    kind: 'web',
     featured: true,
   },
   {
@@ -138,6 +142,7 @@ export const projects = [
     category: 'Web · Game',
     description: 'A hero memory game for Mobile Legends: Bang Bang fans.',
     motif: 'tiles',
+    kind: 'web',
     featured: true,
   },
   {
@@ -149,6 +154,7 @@ export const projects = [
     category: 'Web · Game',
     description: 'A classic Battleship game, play with a friend locally or challenge a bot.',
     motif: 'grid',
+    kind: 'web',
     featured: true,
   },
   {
@@ -160,6 +166,7 @@ export const projects = [
     category: 'Web · Portfolio',
     description: 'My previous portfolio, a space-mission themed site built for The Odin Project.',
     motif: 'card',
+    kind: 'web',
     featured: false,
   },
   {
@@ -171,6 +178,7 @@ export const projects = [
     category: 'Web · DOM',
     description: 'A browser sketchpad that paints random colours as you hover, on a grid you can resize.',
     motif: 'lines',
+    kind: 'web',
     featured: false,
   },
   {
@@ -182,6 +190,7 @@ export const projects = [
     category: 'Web · API',
     description: 'Look up the current weather anywhere, with data from the Visual Crossing API.',
     motif: 'grid',
+    kind: 'web',
     featured: false,
   },
   {
@@ -193,6 +202,7 @@ export const projects = [
     category: 'Web · Productivity',
     description: 'A to-do app that groups tasks into projects, each with a due date and priority.',
     motif: 'tiles',
+    kind: 'web',
     featured: false,
   },
   {
@@ -204,6 +214,7 @@ export const projects = [
     category: 'Web · JavaScript',
     description: 'Keep track of your books, their page counts and whether you have read them yet.',
     motif: 'lines',
+    kind: 'web',
     featured: false,
   },
   {
@@ -215,6 +226,7 @@ export const projects = [
     category: 'Web · Game',
     description: 'Tic Tac Toe with a retro CRT look, against a friend or a bot with three difficulty levels.',
     motif: 'card',
+    kind: 'web',
     featured: false,
   },
   {
@@ -226,6 +238,7 @@ export const projects = [
     category: 'Web · JavaScript',
     description: 'An on-screen calculator for everyday arithmetic, with keyboard support.',
     motif: 'tiles',
+    kind: 'web',
     featured: false,
   },
   {
@@ -237,6 +250,121 @@ export const projects = [
     category: 'Web · Game',
     description: 'The classic hand game, played against the computer.',
     motif: 'grid',
+    kind: 'web',
+    featured: false,
+  },
+  {
+    id: 'olist-data',
+    name: 'OList Store Data Pipeline',
+    sourceUrl: 'https://github.com/syafaatsaat/omni_oracle',
+    liveUrl: null,
+    preview: '/projects/olist-data.webp',
+    category: 'Data · Azure · Power BI',
+    description: 'An Azure ETL pipeline for a Brazilian e-commerce dataset, ending in a Power BI dashboard with business recommendations.',
+    motif: 'card',
+    kind: 'data',
+    featured: false,
+  },
+  {
+    id: 'imdb-data',
+    name: 'IMDb Data Pipeline',
+    sourceUrl: 'https://github.com/syafaatsaat/omni_oracle',
+    liveUrl: null,
+    preview: '/projects/imdb-data.webp',
+    category: 'Data · Python · PostgreSQL',
+    description: "A crawler and ETL pipeline for IMDb's top 250 movies, enriched with OMDb and TMDB data and stored in PostgreSQL.",
+    motif: 'lines',
+    kind: 'data',
+    featured: false,
+  },
+  {
+    id: 'portfolio-v1',
+    name: 'Portfolio V1',
+    sourceUrl: 'https://github.com/syafaatsaat/html-portfolio',
+    liveUrl: 'https://syafaatsaat.github.io/html-portfolio/',
+    preview: '/projects/portfolio-v1.webp',
+    category: 'Web · Portfolio',
+    description: 'My first portfolio website, written in plain HTML.',
+    motif: 'grid',
+    kind: 'web',
+    featured: false,
+  },
+  {
+    id: 'wonder-cells',
+    name: 'Wonder Cells',
+    sourceUrl: null,
+    liveUrl: null,
+    preview: '/projects/wonder-cells.webp',
+    video: 'https://www.youtube.com/watch?v=ieqWUHanY4w',
+    category: 'Game · 3D · Custom Engine',
+    description: 'A 3D action-puzzle platformer where a blood cell repairs a virus-infected body. I built NavMesh pathfinding and the NPC behaviours.',
+    motif: 'tiles',
+    kind: 'game',
+    featured: false,
+  },
+  {
+    id: 'burnt-paws',
+    name: 'Burnt Paws',
+    sourceUrl: null,
+    liveUrl: null,
+    preview: '/projects/burnt-paws.webp',
+    video: 'https://www.youtube.com/watch?v=AgVRCVRH7Cc',
+    category: 'Game · 2D · Unity',
+    description: "A 2D survival game where a cat cooks and hunts its way up the food chain. I programmed the gameplay flow and the animals' behaviour.",
+    motif: 'lines',
+    kind: 'game',
+    featured: false,
+  },
+  {
+    id: 'aracecar',
+    name: 'ARacecar',
+    sourceUrl: null,
+    liveUrl: null,
+    preview: '/projects/aracecar.webp',
+    video: 'https://www.youtube.com/watch?v=LQtLHBfd484',
+    category: 'AR · Simulation · 3D · Unity',
+    description: 'An AR app for building your own race tracks anywhere, right from your phone.',
+    motif: 'card',
+    kind: 'game',
+    featured: false,
+  },
+  {
+    id: 'amp',
+    name: 'Access Modifier: Protected',
+    sourceUrl: null,
+    liveUrl: null,
+    preview: '/projects/amp.webp',
+    video: 'https://www.youtube.com/watch?v=HE2WZom66wk',
+    category: 'Game · 2D · Custom Engine',
+    description: "A 2D local co-op shooter where robot bodyguards protect their VIP and hunt the other team's. I built sprite sheet slicing for our engine and A* pathfinding for the VIPs.",
+    motif: 'tiles',
+    kind: 'game',
+    featured: false,
+  },
+  {
+    id: 'code-curtise',
+    name: 'CODE.curtise',
+    sourceUrl: null,
+    liveUrl: null,
+    preview: '/projects/code-curtise.webp',
+    video: 'https://www.youtube.com/watch?v=z5v6zZrxZmE',
+    category: 'Game · 2D · Custom Engine',
+    description: "A 2D action-puzzle game where Curtise slows time and moves objects to escape a robot-guarded disco. I coded the robots' A* pathfinding.",
+    motif: 'grid',
+    kind: 'game',
+    featured: false,
+  },
+  {
+    id: 'space-ranger-vs-aliens',
+    name: 'Space Ranger vs Aliens',
+    sourceUrl: null,
+    liveUrl: null,
+    preview: '/projects/space-ranger-vs-aliens.webp',
+    video: 'https://www.youtube.com/watch?v=e7hR0ODibYU',
+    category: 'Game · 2D · Custom Engine',
+    description: 'A text-art tower defence game, inspired by Plants vs Zombies, where you guard a spaceship from aliens. I designed the menus and game screen and coded the aliens.',
+    motif: 'card',
+    kind: 'game',
     featured: false,
   },
 ]
@@ -245,7 +373,7 @@ export const projectsNote = 'Linework, Holo Vault and Memory Legends built end t
 
 /** Earlier versions of this portfolio, oldest first; v3 is this site. Shown by each theme's easter egg. */
 export const pastEditions = [
-  { id: 'v1', year: 2024, stack: 'HTML · CSS · JavaScript', url: 'https://syafaatsaat.github.io/portfolio/' },
+  { id: 'v1', year: 2024, stack: 'HTML', url: 'https://syafaatsaat.github.io/html-portfolio/' },
   { id: 'v2', year: 2026, stack: 'HTML · CSS · JavaScript', url: 'https://syafaatsaat.github.io/odin-portfolio/' },
 ]
 
