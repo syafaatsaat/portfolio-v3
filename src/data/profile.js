@@ -155,6 +155,12 @@ export const projects = [
 
 export const projectsNote = 'Linework, Holo Vault and Memory Legends built end to end with Claude Code.'
 
+/** Earlier versions of this portfolio, oldest first; v3 is this site. Shown by each theme's easter egg. */
+export const pastEditions = [
+  { id: 'v1', year: 2024, stack: 'HTML · CSS · JavaScript', url: 'https://syafaatsaat.github.io/portfolio/' },
+  { id: 'v2', year: 2026, stack: 'HTML · CSS · JavaScript', url: 'https://syafaatsaat.github.io/odin-portfolio/' },
+]
+
 export const links = {
   email: 'syafaatsaat@gmail.com',
   linkedin: {
@@ -168,4 +174,4 @@ export const links = {
   cv: '/resume/Muhammad_Nur_Syafaat_CV_Junior_AI_Developer.pdf',
 }
 
-export const profile = { person, education, experience, skills, projects, projectsNote, links }
+export const profile = { person, education, experience, skills, projects, projectsNote, pastEditions, links }

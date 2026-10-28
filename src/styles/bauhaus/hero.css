@@ -3,13 +3,125 @@
     padding-top: 26px;
   }
 
-  /* Name */
+  /* Name: a card with the current edition on the front and a past edition on the back */
   .hero-name {
+    background: var(--black); /* seen behind the card while it turns */
+    perspective: 1600px;
+  }
+
+  .hero-name__card {
+    display: grid;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.7s var(--ease-snap);
+  }
+
+  .hero-name--flipped .hero-name__card { transform: rotateY(180deg); }
+
+  .hero-name__face {
+    grid-area: 1 / 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: 26px;
     min-height: 380px;
     padding: 34px;
+    backface-visibility: hidden;
+  }
+
+  .hero-name__face--front { background: var(--paper-light); }
+
+  .hero-name__face--back {
+    transform: rotateY(180deg);
+    color: #fff;
+  }
+
+  .hero-name__face--red { background: var(--red); }
+  .hero-name__face--blue { background: var(--blue); }
+
+  /* Version switch in the label row */
+  .hero-name__versions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .hero-name__version {
+    padding: 3px 9px;
+    border: 2px solid var(--black);
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+
+    &:hover { background: var(--yellow); }
+
+    &[aria-pressed='true'] {
+      background: var(--black);
+      color: #fff;
+      cursor: default;
+    }
+  }
+
+  .hero-name__edition {
+    font-size: clamp(34px, 6.6vw, 94px);
+    font-weight: 900;
+    line-height: 0.86;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-name__stack {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 14px;
+  }
+
+  .hero-name__links {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px 16px;
+    padding-top: 12px;
+    border-top: 2px solid currentColor;
+  }
+
+  .hero-name__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  /* Only the words underline; the icon slides instead */
+  .hero-name__link-label { text-underline-offset: 4px; }
+
+  .hero-name__link:hover .hero-name__link-label {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+  }
+
+  .hero-name__link:hover .arrow-icon--left { transform: translateX(-6px); }
+  .hero-name__link:hover .arrow-icon--up-right { transform: translate(4px, -4px); }
+
+  /* No turning under reduced motion: the faces simply swap */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-name__card { transition: none; }
   }
 
   .hero-name__title {
@@ -119,7 +231,7 @@
   .hero-cv:hover .arrow-icon { transform: translateY(6px); }
 
   @media (max-width: 560px) {
-    .hero-name {
+    .hero-name__face {
       padding: 26px 22px;
       min-height: 0;
     }

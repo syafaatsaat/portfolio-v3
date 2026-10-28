@@ -12,7 +12,7 @@ import SkillsTicker from './sections/SkillsTicker.jsx'
 
 /** Main theme: Bento × Bauhaus. Implements the shared Site contract ({ profile, page, onToggleTheme }). */
 export default function BauhausSite({ profile, page, onToggleTheme }) {
-  const { person, education, experience, skills, projects, projectsNote, links } = profile
+  const { person, education, experience, skills, projects, projectsNote, pastEditions, links } = profile
   const fullName = `${person.firstName} ${person.middleName} ${person.lastName}`
   const currentJob = experience.find((job) => job.period.isCurrent)
 
@@ -25,7 +25,7 @@ export default function BauhausSite({ profile, page, onToggleTheme }) {
         </main>
       ) : (
         <main id="top">
-          <Hero person={person} cvUrl={links.cv} />
+          <Hero person={person} cvUrl={links.cv} editions={pastEditions} />
           <SkillsTicker groups={skills} />
           <About person={person} education={education} current={currentJob} />
           <Experience items={experience} />

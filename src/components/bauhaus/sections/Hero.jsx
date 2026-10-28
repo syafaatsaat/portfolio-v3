@@ -6,10 +6,9 @@ import ExternalLink from '../../shared/ExternalLink.jsx'
 import Bento from '../primitives/Bento.jsx'
 import Shape from '../primitives/Shape.jsx'
 import Tile from '../primitives/Tile.jsx'
+import HeroName from './HeroName.jsx'
 
-const YEAR = new Date().getFullYear()
-
-export default function Hero({ person, cvUrl }) {
+export default function Hero({ person, cvUrl, editions }) {
   const time = useClock(person.timeZone)
   const ref = useRef(null)
   usePointerParallax(ref)
@@ -17,17 +16,7 @@ export default function Hero({ person, cvUrl }) {
   return (
     <div ref={ref} className="hero wrap">
       <Bento columns={6}>
-        <Tile color="white" span={4} rows={3} className="hero-name">
-          <span className="label">Portfolio · {YEAR}</span>
-          <div>
-            <h1 className="hero-name__title">
-              <span>{person.firstName}</span>
-              <span>{person.middleName}</span>
-              <span className="hero-name__accent">{person.lastName}</span>
-            </h1>
-            <p className="hero-name__tagline">{person.tagline}</p>
-          </div>
-        </Tile>
+        <HeroName person={person} editions={editions} />
 
         <Tile color="red" span={2} className="hero-art-a" aria-hidden="true">
           <Shape kind="circle" color="paper" motion="rotate" depth={14} className="hero-art-a__circle" />
