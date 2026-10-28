@@ -41,6 +41,13 @@ html[data-theme='cyber'] body {
 }
 
 .cyber {
+  /* Keep the footer at the bottom of the window on short pages (/projects); the body pads for the taskbar */
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100dvh - var(--taskbar-h));
+
+  > main { flex: 1; }
+
   :focus-visible {
     outline: 2px solid var(--lime);
     outline-offset: 3px;

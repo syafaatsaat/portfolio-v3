@@ -7,6 +7,13 @@ html[data-theme='bauhaus'] body {
 }
 
 .bauhaus {
+  /* Keep the footer at the bottom of the window on short pages (/projects) */
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+
+  > main { flex: 1; }
+
   :focus-visible {
     outline: 4px solid var(--yellow);
     outline-offset: -4px;
