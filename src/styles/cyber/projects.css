@@ -9,11 +9,12 @@
     display: flex;
     flex-direction: column;
 
-    /* staggered like windows dropped on a desktop */
+    /* staggered like windows dropped on a desktop; the delays repeat every 4 windows
+       (two rows), since each window only opens once it scrolls into view */
     &:nth-child(even) { translate: 0 26px; }
-    &:nth-child(2) { --window-delay: 90ms; }
-    &:nth-child(3) { --window-delay: 180ms; }
-    &:nth-child(4) { --window-delay: 270ms; }
+    &:nth-child(4n + 2) { --window-delay: 90ms; }
+    &:nth-child(4n + 3) { --window-delay: 180ms; }
+    &:nth-child(4n + 4) { --window-delay: 270ms; }
   }
 
   .app__menu {
