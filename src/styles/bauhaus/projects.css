@@ -14,6 +14,7 @@
   .project__art--blue { background: var(--blue); }
   .project__art--red { background: var(--red); }
   .project__art--yellow { background: var(--yellow); }
+  .project__art--paper-deep { background: var(--paper-deep); }
 
   /* Screenshot as a duotone in the panel colour; real colours on hover or keyboard focus */
   .project__preview {

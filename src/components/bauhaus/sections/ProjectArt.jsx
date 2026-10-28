@@ -1,8 +1,13 @@
 import { classNames } from '../../shared/classNames.js'
 import Shape from '../primitives/Shape.jsx'
 
-function LinesArt() {
-  return <Shape kind="square" color="paper" motion="rotate" className="art-lines" />
+function LinesArt({ color = 'paper' }) {
+  return <Shape kind="square" color={color} motion="rotate" className="art-lines" />
+}
+
+// Lines in black, since paper-coloured lines vanish on the paper-deep panel
+function GridArt() {
+  return <LinesArt color="black" />
 }
 
 function CardArt() {
@@ -30,7 +35,7 @@ const ARTWORK = {
   lines: { Art: LinesArt, background: 'blue' },
   card: { Art: CardArt, background: 'red' },
   tiles: { Art: TilesArt, background: 'yellow' },
-  grid: { Art: null, background: 'paper-deep' },
+  grid: { Art: GridArt, background: 'paper-deep' },
 }
 
 /**
