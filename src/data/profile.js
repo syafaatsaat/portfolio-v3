@@ -148,7 +148,7 @@ export const projects = [
     preview: '/projects/battleship.webp',
     category: 'Web · Game',
     description: 'A classic Battleship game, play with a friend locally or challenge a bot.',
-    motif: 'lines',
+    motif: 'grid',
     featured: true,
   },
 ]

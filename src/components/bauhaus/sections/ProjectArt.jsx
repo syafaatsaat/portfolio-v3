@@ -30,6 +30,7 @@ const ARTWORK = {
   lines: { Art: LinesArt, background: 'blue' },
   card: { Art: CardArt, background: 'red' },
   tiles: { Art: TilesArt, background: 'yellow' },
+  grid: { Art: null, background: 'paper-deep' },
 }
 
 /**
