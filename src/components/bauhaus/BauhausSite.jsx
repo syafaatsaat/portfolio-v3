@@ -34,7 +34,7 @@ export default function BauhausSite({ profile, page, onToggleTheme }) {
           <Contact links={links} availability={person.availability} />
         </main>
       )}
-      <Footer name={fullName} onBootEasterEgg={onToggleTheme} />
+      <Footer name={fullName} />
     </div>
   )
 }

@@ -18,23 +18,4 @@
     text-transform: uppercase;
     letter-spacing: 0.14em;
   }
-
-  /* Easter egg: switches to the SYAF_OS theme */
-  .site-footer__egg {
-    padding: 6px 12px;
-    border: 2px solid var(--yellow);
-    background: transparent;
-    color: var(--yellow);
-    font-weight: 700;
-    font-size: 12px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: background 0.15s, color 0.15s;
-
-    &:hover {
-      background: var(--yellow);
-      color: var(--black);
-    }
-  }
 }
