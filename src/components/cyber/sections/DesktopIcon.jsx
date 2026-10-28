@@ -31,6 +31,13 @@ const ICONS = {
       strokeWidth="1.5"
     />
   ),
+  bin: (
+    <>
+      <path d="M12 15h24l-2.5 26a2 2 0 0 1-2 1.8H16.5a2 2 0 0 1-2-1.8z" fill="#121636" stroke="#B6FF3B" strokeWidth="2" />
+      <path d="M8 11h32M19 11V7h10v4" fill="none" stroke="#B6FF3B" strokeWidth="2" strokeLinecap="round" />
+      <path d="M20 21v15M28 21v15" stroke="#FF2BD6" strokeWidth="2" strokeLinecap="round" />
+    </>
+  ),
   mail: (
     <>
       <rect x="5" y="11" width="38" height="26" rx="3" fill="#121636" stroke="#FF2BD6" strokeWidth="2" />
@@ -39,7 +46,7 @@ const ICONS = {
   ),
 }
 
-/** Pixel-ish desktop icon for a section. */
+/** Pixel-ish desktop icon for a section (or the recycle bin). */
 export default function DesktopIcon({ name }) {
   return (
     <svg viewBox="0 0 48 48" aria-hidden="true">

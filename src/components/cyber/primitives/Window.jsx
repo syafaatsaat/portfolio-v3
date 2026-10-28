@@ -9,8 +9,9 @@ import { classNames } from '../../shared/classNames.js'
  * @param {'magenta'|'cyan'|'lime'} accent  colour of the hard drop shadow
  * @param {'left'|'right'} [offset]  nudges the window sideways on wide screens
  * @param {import('react').ElementType} [as]
+ * @param {() => void} [onClose]  makes the × control a real close button
  */
-export default function Window({ title, accent = 'magenta', offset, as: Element = 'div', className, children }) {
+export default function Window({ title, accent = 'magenta', offset, as: Element = 'div', className, onClose, children }) {
   const ref = useRef(null)
   const isOpen = useInView(ref)
 
@@ -22,10 +23,16 @@ export default function Window({ title, accent = 'magenta', offset, as: Element 
     >
       <div className="window__titlebar">
         <span className="window__title">{title}</span>
-        <span className="window__controls" aria-hidden="true">
-          <span>─</span>
-          <span>□</span>
-          <span>×</span>
+        <span className="window__controls">
+          <span aria-hidden="true">─</span>
+          <span aria-hidden="true">□</span>
+          {onClose ? (
+            <button type="button" className="window__close" aria-label="Close" onClick={onClose}>
+              ×
+            </button>
+          ) : (
+            <span aria-hidden="true">×</span>
+          )}
         </span>
       </div>
       {children}

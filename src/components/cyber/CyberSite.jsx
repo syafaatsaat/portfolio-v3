@@ -13,7 +13,7 @@ import Taskbar from './sections/Taskbar.jsx'
 
 /** Easter-egg theme: SYAF_OS (Cybercore × Y2K). Implements the shared Site contract ({ profile, page, onToggleTheme }). */
 export default function CyberSite({ profile, page, onToggleTheme }) {
-  const { person, education, experience, skills, projects, projectsNote, links } = profile
+  const { person, education, experience, skills, projects, projectsNote, pastEditions, links } = profile
   const fullName = `${person.firstName} ${person.middleName} ${person.lastName}`
   // Exit powers the screen off first; the theme switches once the animation ends
   const powerOff = useExitAnimation(onToggleTheme)
@@ -27,7 +27,7 @@ export default function CyberSite({ profile, page, onToggleTheme }) {
         </main>
       ) : (
         <main id="top">
-          <Desktop person={person} cvUrl={links.cv} projectCount={projects.length} />
+          <Desktop person={person} cvUrl={links.cv} projectCount={projects.length} editions={pastEditions} />
           <About person={person} education={education} />
           <Experience items={experience} />
           <Skills groups={skills} />

@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { SECTION_IDS } from '../../../data/sections.js'
 import ChromeHeading from '../primitives/ChromeHeading.jsx'
 import GlossButton from '../primitives/GlossButton.jsx'
@@ -5,9 +6,12 @@ import Window from '../primitives/Window.jsx'
 import { SECTION_FILES } from '../sectionFiles.js'
 import BootLog from './BootLog.jsx'
 import DesktopIcon from './DesktopIcon.jsx'
+import RecycleBin from './RecycleBin.jsx'
 
-/** Hero: desktop icons that jump to each section, plus the welcome window. */
-export default function Desktop({ person, cvUrl, projectCount }) {
+/** Hero: desktop icons that jump to each section, plus the welcome window. The recycle bin holds past editions. */
+export default function Desktop({ person, cvUrl, projectCount, editions }) {
+  const [isBinOpen, setIsBinOpen] = useState(false)
+
   return (
     <div className="desktop wrap">
       <nav className="desktop__icons" aria-label="Desktop shortcuts">
@@ -17,7 +21,12 @@ export default function Desktop({ person, cvUrl, projectCount }) {
             {SECTION_FILES[id].icon}
           </a>
         ))}
+        <button type="button" className="desktop__icon" aria-haspopup="dialog" onClick={() => setIsBinOpen(true)}>
+          <DesktopIcon name="bin" />
+          recycle bin
+        </button>
       </nav>
+      <RecycleBin editions={editions} isOpen={isBinOpen} onClose={() => setIsBinOpen(false)} />
 
       <Window title="welcome.exe" accent="magenta" className="desktop__welcome">
         <div className="window__body desktop__body">
