@@ -103,7 +103,8 @@
   /* Only the words underline; the icon slides instead */
   .app__source-label { text-underline-offset: 3px; }
   .app__source:hover .app__source-label { text-decoration: underline; }
-  .app__source:hover .arrow-icon { transform: translateX(4px); }
+  .app__source:hover .arrow-icon--right { transform: translateX(4px); }
+  .app__source:hover .arrow-icon--left { transform: translateX(-4px); }
 
   .app__name {
     font-family: var(--font-display);
@@ -133,6 +134,18 @@
     color: var(--mute);
   }
 
+  /* Note and "open all" link share a row under the home folder */
+  .apps__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0 24px;
+  }
+
+  .apps__more { margin-top: 48px; font-size: 13px; }
+  .apps__back { margin-bottom: 18px; font-size: 13px; }
+
   @media (max-width: 960px) {
     .apps {
       grid-template-columns: 1fr;
@@ -142,5 +155,7 @@
 
     .app:nth-child(even) { translate: none; }
     .apps__note { margin-top: 24px; text-align: center; }
+    .apps__footer { flex-direction: column; align-items: center; }
+    .apps__more { margin-top: 14px; }
   }
 }
