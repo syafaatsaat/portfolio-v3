@@ -12,11 +12,13 @@ export const themeRegistry = new ThemeRegistry({ mainId: 'bauhaus', easterEggId:
   .register({
     id: 'bauhaus',
     label: 'Bento × Bauhaus',
+    favicon: '/favicon.svg',
     load: () => import('../components/bauhaus/BauhausSite.jsx'),
   })
   .register({
     id: 'cyber',
     label: 'SYAF_OS (Cybercore × Y2K)',
+    favicon: '/favicon-os.svg',
     load: () => import('../components/cyber/CyberSite.jsx'),
   })
 

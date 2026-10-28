@@ -2,6 +2,7 @@
  * @typedef {object} ThemeDefinition
  * @property {string} id
  * @property {string} label
+ * @property {string} favicon  path of the browser-tab icon shown while the theme is active
  * @property {() => Promise<{ default: import('react').ComponentType<SiteProps> }>} load
  *
  * @typedef {object} SiteProps  The contract every theme's Site component accepts.

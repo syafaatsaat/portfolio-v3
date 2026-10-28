@@ -10,13 +10,18 @@ import ThemeFallback from './components/shared/ThemeFallback.jsx'
 const SITES = Object.fromEntries(themeRegistry.ids().map((id) => [id, lazy(themeRegistry.get(id).load)]))
 
 const HOME_TITLE = document.title
-const TITLES = { home: HOME_TITLE, projects: `Projects — ${HOME_TITLE.split(' — ')[0]}` }
+const TITLES = { home: HOME_TITLE, projects: `Projects · ${HOME_TITLE.split(' · ')[0]}` }
 
 export default function App() {
   const { theme, toggleTheme } = useTheme()
   const page = useRoute()
   const previousPage = useRef(page)
   const Site = SITES[theme]
+
+  // Each theme brings its own tab icon
+  useEffect(() => {
+    document.querySelector('link[rel="icon"]').href = themeRegistry.get(theme).favicon
+  }, [theme])
 
   useEffect(() => {
     document.title = TITLES[page]
