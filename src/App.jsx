@@ -23,7 +23,8 @@ export default function App() {
     // A new page starts at the top, or at its #section; the first load keeps the browser's own scroll.
     if (previousPage.current === page) return
     previousPage.current = page
-    const target = window.location.hash && document.getElementById(window.location.hash.slice(1))
+    const hash = window.location.hash
+    const target = hash && hash !== '#top' && document.getElementById(hash.slice(1))
     if (target) target.scrollIntoView({ behavior: 'instant' })
     else window.scrollTo({ top: 0, behavior: 'instant' })
   }, [page])

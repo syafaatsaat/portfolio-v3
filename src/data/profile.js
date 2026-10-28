@@ -11,6 +11,7 @@ export const person = {
   middleName: 'Nur',
   lastName: 'Syafaat',
   shortName: 'Syafaat',
+  userName: 'syafaatsaat',
   role: 'Junior AI Developer',
   location: 'Singapore',
   timeZone: 'Asia/Singapore',

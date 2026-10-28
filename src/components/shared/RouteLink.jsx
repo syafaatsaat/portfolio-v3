@@ -2,7 +2,8 @@ import { navigate } from '../../states/hooks/useRoute.js'
 
 /**
  * A link to another page of this site. Plain clicks switch pages without a reload;
- * links within the current page (/#about on the home page) keep native anchor scrolling.
+ * links within the current page (/#about on the home page) keep native anchor scrolling,
+ * except #top, which scrolls to the very top rather than to <main> under the sticky header.
  */
 export default function RouteLink({ href, onClick, children, ...rest }) {
   const handleClick = (event) => {
@@ -10,7 +11,13 @@ export default function RouteLink({ href, onClick, children, ...rest }) {
     if (event.defaultPrevented || event.button !== 0) return
     if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return
     const url = new URL(href, window.location.href)
-    if (url.pathname === window.location.pathname) return
+    if (url.pathname === window.location.pathname) {
+      if (url.hash !== '#top') return
+      event.preventDefault()
+      window.history.replaceState(null, '', url.pathname + url.hash)
+      window.scrollTo({ top: 0 })
+      return
+    }
     event.preventDefault()
     navigate(url.pathname + url.hash)
   }

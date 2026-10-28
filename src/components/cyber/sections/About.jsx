@@ -6,11 +6,16 @@ import { SECTION_FILES } from '../sectionFiles.js'
 
 export default function About({ person, education }) {
   const properties = [
-    ['USER', person.shortName.toLowerCase()],
+    ['USER', person.userName.toLowerCase()],
     ['ROLE', person.role],
     ['LOCATION', `${person.location} (${person.timeZoneLabel})`],
     ['EDU', `${education.shortDegree}, ${education.shortSchool} '${String(education.period.end.year).slice(-2)}`],
-    ['STATUS', `● ${person.availability.toLowerCase()}`],
+    [
+      'STATUS',
+      <>
+        <span className="about__status-dot" aria-hidden="true">●</span> {person.availability}
+      </>,
+    ],
   ]
 
   return (

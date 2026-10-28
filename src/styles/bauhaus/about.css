@@ -26,6 +26,19 @@
   .about-portrait__triangle { width: 80px; height: 70px; left: 14%; bottom: 12%; }
   .about-portrait__eye { width: 12%; aspect-ratio: 1; left: 32%; top: 30%; }
 
+  /* Hovering the portrait shuffles it: the head leans back and looks over, the body tilts, the triangle flips */
+  .about-portrait .shape { transition-timing-function: var(--ease-pop), ease-out, var(--ease-pop); }
+  .about-portrait:hover {
+    .about-portrait__head { transform: translate(-8%, -6%); }
+    .about-portrait__eye { transform: translate(10%, -40%); }
+    .about-portrait__body { transform: translate(-12%, 6%) rotate(-12deg); }
+    .about-portrait__triangle { transform: translateY(-36px) rotate(180deg); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .about-portrait:hover .shape { transform: none; }
+  }
+
   /* Fact tiles */
   .fact .label {
     display: block;

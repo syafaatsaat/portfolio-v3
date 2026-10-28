@@ -1,8 +1,13 @@
 import { useEffect, useState } from 'react'
+import { useRoute } from './useRoute.js'
 
-/** Returns the id of the section currently crossing the middle of the viewport. */
+/**
+ * Returns the id of the section currently crossing the middle of the viewport.
+ * Re-attaches on every page change, since each page mounts its own section elements.
+ */
 export function useActiveSection(sectionIds) {
   const [activeId, setActiveId] = useState(null)
+  const page = useRoute()
   const idsKey = sectionIds.join(',')
 
   useEffect(() => {
@@ -21,7 +26,7 @@ export function useActiveSection(sectionIds) {
       .forEach((section) => observer.observe(section))
 
     return () => observer.disconnect()
-  }, [idsKey])
+  }, [idsKey, page])
 
   return activeId
 }
