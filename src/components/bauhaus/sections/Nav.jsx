@@ -4,6 +4,7 @@ import { useActiveSection } from '../../../states/hooks/useActiveSection.js'
 import { useElementBox } from '../../../states/hooks/useElementBox.js'
 import { useMobileMenu } from '../../../states/hooks/useMobileMenu.js'
 import { classNames } from '../../shared/classNames.js'
+import RouteLink from '../../shared/RouteLink.jsx'
 
 const LABELS = {
   about: 'About',
@@ -22,14 +23,14 @@ export default function Nav({ brand }) {
   return (
     <header className="site-header">
       <nav className="nav wrap" aria-label="Main">
-        <a href="#top" className="nav__brand">
+        <RouteLink href="/#top" className="nav__brand">
           <span className="nav__mark" aria-hidden="true">
             <i />
             <i />
             <i />
           </span>
           {brand}
-        </a>
+        </RouteLink>
         <button
           type="button"
           className="nav__burger"
@@ -50,15 +51,15 @@ export default function Nav({ brand }) {
             const isActive = activeId === id
             return (
               <li key={id}>
-                <a
+                <RouteLink
                   ref={isActive ? activeLinkRef : undefined}
-                  href={`#${id}`}
+                  href={`/#${id}`}
                   className={classNames('nav__link', isActive && 'nav__link--active')}
                   aria-current={isActive ? 'location' : undefined}
                   onClick={menu.close}
                 >
                   {LABELS[id]}
-                </a>
+                </RouteLink>
               </li>
             )
           })}

@@ -105,6 +105,7 @@ export const skills = [
 /** motif: which illustration a theme draws for the project ('lines' | 'card' | 'tiles') */
 // liveUrl: deployed app; leave null to show only the source link
 // preview: screenshot in /public/projects; leave null to show the illustrated art
+// featured: shown on the home page; every project is listed on /projects
 export const projects = [
   {
     id: 'linework',
@@ -115,6 +116,7 @@ export const projects = [
     category: 'Web · Client-side',
     description: 'A CV builder that runs entirely in the browser, so user data never leaves the device.',
     motif: 'lines',
+    featured: true,
   },
   {
     id: 'holo-vault',
@@ -125,6 +127,7 @@ export const projects = [
     category: 'React · Commerce',
     description: 'A React shopping app for Pokémon TCG singles, priced at market value.',
     motif: 'card',
+    featured: true,
   },
   {
     id: 'memory-legends',
@@ -135,6 +138,7 @@ export const projects = [
     category: 'Web · Game',
     description: 'A hero memory game for Mobile Legends: Bang Bang fans.',
     motif: 'tiles',
+    featured: true,
   },
   {
     id: 'battleship',
@@ -145,6 +149,7 @@ export const projects = [
     category: 'Web · Game',
     description: 'A classic Battleship game, play with a friend locally or challenge a bot.',
     motif: 'lines',
+    featured: true,
   },
 ]
 
