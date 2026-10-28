@@ -163,7 +163,96 @@
 
   .hero-art-c { min-height: 150px; }
   .hero-art-c__stripes { top: 26px; bottom: 26px; left: 26px; width: 60%; }
-  .hero-art-c__circle { width: 90px; height: 90px; right: 30px; top: 50%; margin-top: -45px; }
+
+  /* Power switch (easter egg): the red circle is the button; hovering or focusing it wipes the stripes into words */
+  .hero-power__knob {
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    width: 90px;
+    height: 90px;
+    margin-top: -45px;
+    display: grid;
+    place-items: center;
+    border: 0;
+    border-radius: 50%;
+    background: var(--red);
+    color: #fff;
+    cursor: pointer;
+    animation: bh-pulse 2.4s ease-in-out infinite;
+    transition: transform 0.5s var(--ease-snap), scale 0.6s var(--ease-pop) 350ms;
+
+    &:is(:hover, :focus-visible) { transform: scale(1.08); }
+    &:focus-visible { outline-offset: 4px; }
+    &:disabled { cursor: progress; }
+  }
+
+  /* Pops in with the tile's other shapes */
+  .bento[data-revealed='false'] .hero-power__knob { scale: 0; }
+
+  .hero-power__icon { width: 40px; height: 40px; }
+
+  /* Same box and colour as the stripes, so the lines read as turning into the words */
+  .hero-power__text {
+    position: absolute;
+    top: 26px;
+    bottom: 26px;
+    left: 26px;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--paper);
+    font-size: 40px;
+    font-weight: 900;
+    line-height: 0.95;
+    text-transform: uppercase;
+    clip-path: inset(0 100% 0 0);
+    pointer-events: none;
+    transition: clip-path 0.45s var(--ease-snap);
+  }
+
+  .hero-power .hero-art-c__stripes {
+    clip-path: inset(0);
+    transition:
+      clip-path 0.45s var(--ease-snap),
+      transform 0.5s var(--ease-snap),
+      translate 0.3s ease-out,
+      scale 0.6s var(--ease-pop) calc(var(--i, 0) * var(--stagger) + 350ms);
+  }
+
+  /* Left-to-right wipe: the stripes clip away as the words clip in behind the same edge */
+  .hero-power:has(.hero-power__knob:is(:hover, :focus-visible)) {
+    .hero-art-c__stripes { clip-path: inset(0 0 0 100%); }
+    .hero-power__text { clip-path: inset(0); }
+  }
+
+  /* Booting. The tile's own animation is the one that ends the exit, so it outranks the reveal wipe. */
+  .bento[data-revealed] > .tile.hero-power--booting {
+    animation: bh-power-flash 1s linear both;
+    animation-delay: 0ms;
+  }
+
+  /* Booting wins over hover: the stripes come back for the squash and the words go */
+  .hero-power.hero-power--booting {
+    .hero-art-c__stripes {
+      clip-path: inset(0);
+      transition-duration: 0.15s;
+      animation: bh-power-squash 0.9s var(--ease-snap) forwards;
+    }
+
+    .hero-power__text {
+      clip-path: inset(0 100% 0 0);
+      transition-duration: 0.15s;
+    }
+
+    .hero-power__knob { animation: bh-power-knob 0.45s ease-in forwards; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-power .hero-art-c__stripes,
+    .hero-power__text { transition: none; }
+  }
 
   /* Role */
   .hero-role {
@@ -235,5 +324,7 @@
       padding: 26px 22px;
       min-height: 0;
     }
+
+    .hero-power__text { font-size: 30px; }
   }
 }

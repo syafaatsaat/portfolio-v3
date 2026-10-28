@@ -30,6 +30,37 @@
   to { translate: 0 12px; }
 }
 
+/* Power switch: a soft ring ripples out of the red button */
+@keyframes bh-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(230, 51, 34, 0.6); }
+  50% { box-shadow: 0 0 0 14px rgba(230, 51, 34, 0); }
+}
+
+/* Power switch pressed: the stripes squash into one glowing scanline, which then shrinks away */
+@keyframes bh-power-squash {
+  45% {
+    transform: scaleY(0.04);
+    background: #fff;
+    box-shadow: 0 0 18px 4px #00f0ff;
+  }
+  100% {
+    transform: scaleY(0.04) scaleX(0);
+    background: #fff;
+    box-shadow: 0 0 18px 4px #00f0ff;
+  }
+}
+
+@keyframes bh-power-knob {
+  to { transform: scale(0); }
+}
+
+/* Runs alongside the squash and outlasts it, so the theme switches once the line is gone */
+@keyframes bh-power-flash {
+  0%, 85% { filter: none; }
+  92% { filter: brightness(1.6); }
+  100% { filter: none; }
+}
+
 @keyframes bh-ticker {
   to { transform: translateX(-50%); }
 }

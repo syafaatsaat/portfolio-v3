@@ -25,7 +25,7 @@ export default function BauhausSite({ profile, page, onToggleTheme }) {
         </main>
       ) : (
         <main id="top">
-          <Hero person={person} cvUrl={links.cv} editions={pastEditions} />
+          <Hero person={person} cvUrl={links.cv} editions={pastEditions} onBoot={onToggleTheme} />
           <SkillsTicker groups={skills} />
           <About person={person} education={education} current={currentJob} />
           <Experience items={experience} />
