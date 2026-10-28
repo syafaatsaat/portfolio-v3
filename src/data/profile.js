@@ -102,7 +102,7 @@ export const skills = [
   },
 ]
 
-/** motif: which illustration a theme draws for the project ('lines' | 'card' | 'tiles') */
+/** motif: which illustration and colour a theme draws for the project ('lines' | 'card' | 'tiles' | 'grid') */
 // liveUrl: deployed app; leave null to show only the source link
 // preview: screenshot in /public/projects; leave null to show the illustrated art
 // featured: shown on the home page; every project is listed on /projects
@@ -159,7 +159,7 @@ export const projects = [
     preview: '/projects/portfolio-v2.webp',
     category: 'Web · Portfolio',
     description: 'My previous portfolio, a space-mission themed site built for The Odin Project.',
-    motif: 'lines',
+    motif: 'card',
     featured: false,
   },
   {
@@ -181,7 +181,7 @@ export const projects = [
     preview: '/projects/weather-app.webp',
     category: 'Web · API',
     description: 'Look up the current weather anywhere, with data from the Visual Crossing API.',
-    motif: 'lines',
+    motif: 'grid',
     featured: false,
   },
   {
@@ -192,7 +192,7 @@ export const projects = [
     preview: '/projects/what-to-do.webp',
     category: 'Web · Productivity',
     description: 'A to-do app that groups tasks into projects, each with a due date and priority.',
-    motif: 'lines',
+    motif: 'tiles',
     featured: false,
   },
   {
@@ -214,7 +214,7 @@ export const projects = [
     preview: '/projects/tic-tac-toe.webp',
     category: 'Web · Game',
     description: 'Tic Tac Toe with a retro CRT look, against a friend or a bot with three difficulty levels.',
-    motif: 'lines',
+    motif: 'card',
     featured: false,
   },
   {
@@ -225,7 +225,7 @@ export const projects = [
     preview: '/projects/calculator.webp',
     category: 'Web · JavaScript',
     description: 'An on-screen calculator for everyday arithmetic, with keyboard support.',
-    motif: 'lines',
+    motif: 'tiles',
     featured: false,
   },
   {
@@ -236,7 +236,7 @@ export const projects = [
     preview: '/projects/rock-paper-scissors.webp',
     category: 'Web · Game',
     description: 'The classic hand game, played against the computer.',
-    motif: 'lines',
+    motif: 'grid',
     featured: false,
   },
 ]
