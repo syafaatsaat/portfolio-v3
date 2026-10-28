@@ -13,7 +13,7 @@ export default function RecycleBin({ editions, isOpen, onClose }) {
   const dialogProps = useModalDialog(isOpen, onClose)
 
   return (
-    <dialog {...dialogProps} className="bin" aria-label="Recycle bin">
+    <dialog {...dialogProps} className="os-dialog bin" aria-label="Recycle bin">
       {/* Mounted only while open, so the window plays its open animation each time */}
       {isOpen && (
         <Window title="recycle_bin" accent="lime" onClose={onClose}>

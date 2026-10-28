@@ -108,9 +108,9 @@
     margin-top: 28px;
   }
 
-  /* ---------- Recycle bin (easter egg) ---------- */
-  .bin {
-    width: min(560px, calc(100vw - 32px));
+  /* ---------- Pop-up windows (recycle bin, project videos) ---------- */
+  .os-dialog {
+    width: min(var(--dialog-width, 560px), calc(100vw - 32px));
     max-height: calc(100dvh - 32px);
     margin: auto;
     padding: 0 8px 8px 0; /* room for the window's hard shadow */
@@ -126,6 +126,7 @@
     }
   }
 
+  /* ---------- Recycle bin (easter egg) ---------- */
   .bin__body { padding: 22px; }
 
   .bin__status {

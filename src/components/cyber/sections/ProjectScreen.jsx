@@ -24,14 +24,36 @@ const SCREENS = {
   ),
 }
 
-/** The "screen" area of a project's app window: the app's screenshot if there is one, else the motif's icon. */
-export default function ProjectScreen({ motif, accent, preview, name }) {
+/**
+ * The "screen" area of a project's app window: the project's picture if there is one, else the
+ * motif's icon. A game's thumbnail is a play button for its video (`onPlay`).
+ */
+export default function ProjectScreen({ motif, accent, kind = 'web', preview, name, onPlay }) {
+  if (preview && kind === 'game' && onPlay) {
+    return (
+      <button
+        type="button"
+        className={`app__screen app__screen--${accent} app__screen--preview app__screen--video`}
+        onClick={onPlay}
+        aria-label={`Play the ${name} video`}
+        aria-haspopup="dialog"
+      >
+        <img src={preview} alt="" className="app__screenshot" width="800" height="500" loading="lazy" decoding="async" />
+        <span className="app__play" aria-hidden="true">
+          <svg viewBox="0 0 10 10">
+            <path d="M2 0.5l7.5 4.5-7.5 4.5z" />
+          </svg>
+        </span>
+      </button>
+    )
+  }
+
   if (preview) {
     return (
       <div className={`app__screen app__screen--${accent} app__screen--preview`}>
         <img
           src={preview}
-          alt={`Screenshot of ${name}`}
+          alt={`${kind === 'web' ? 'Screenshot' : 'Picture'} of ${name}`}
           className="app__screenshot"
           width="800"
           height="500"
