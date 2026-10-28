@@ -85,9 +85,30 @@
   }
 
   .project__link:hover .arrow-icon--right { transform: translateX(6px); }
+  .project__link:hover .arrow-icon--left { transform: translateX(-6px); }
   .project__link:hover .arrow-icon--up-right { transform: translate(4px, -4px); }
 
   .projects-note { margin-top: 14px; }
+
+  /* Note and "All projects" link share a row under the home grid */
+  .projects-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0 24px;
+  }
+
+  .projects-more,
+  .projects-back {
+    font-weight: 800;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .projects-more { margin-top: 14px; }
+  .projects-back { margin-bottom: 18px; }
 
   /* ---------- Project artwork ---------- */
   .art-lines {
