@@ -1,17 +1,40 @@
+import { useState } from 'react'
 import ArrowIcon from '../../shared/ArrowIcon.jsx'
 import ExternalLink from '../../shared/ExternalLink.jsx'
 import Tile from '../primitives/Tile.jsx'
 import ProjectArt from './ProjectArt.jsx'
+import VideoDialog from './VideoDialog.jsx'
 
 export default function ProjectCard({ project }) {
+  const [isVideoOpen, setIsVideoOpen] = useState(false)
+  const openVideo = project.video ? () => setIsVideoOpen(true) : undefined
+
   return (
     <Tile as="article" color="white" flush className="project">
-      <ProjectArt motif={project.motif} preview={project.preview} name={project.name} />
+      <ProjectArt
+        motif={project.motif}
+        kind={project.kind}
+        preview={project.preview}
+        name={project.name}
+        onPlay={openVideo}
+      />
       <div className="project__info">
         <span className="label">{project.category}</span>
         <h3 className="project__name">{project.name}</h3>
         <p className="project__description">{project.description}</p>
         <div className="project__links">
+          {openVideo && (
+            <button
+              type="button"
+              className="project__link project__link--live"
+              onClick={openVideo}
+              aria-haspopup="dialog"
+              aria-label={`${project.name}, watch video`}
+            >
+              <span className="project__link-label">Watch video</span>
+              <span className="project__link-play" aria-hidden="true">▶</span>
+            </button>
+          )}
           {project.liveUrl && (
             <ExternalLink
               href={project.liveUrl}
@@ -34,6 +57,14 @@ export default function ProjectCard({ project }) {
           )}
         </div>
       </div>
+      {project.video && (
+        <VideoDialog
+          name={project.name}
+          video={project.video}
+          isOpen={isVideoOpen}
+          onClose={() => setIsVideoOpen(false)}
+        />
+      )}
     </Tile>
   )
 }

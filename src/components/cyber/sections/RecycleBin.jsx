@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useModalDialog } from '../../../states/hooks/useModalDialog.js'
 import ArrowIcon from '../../shared/ArrowIcon.jsx'
 import GlossButton from '../primitives/GlossButton.jsx'
 import Window from '../primitives/Window.jsx'
@@ -10,21 +10,10 @@ const BUTTONS = ['lime', 'pink']
  * A modal <dialog>, so Esc closes it and focus stays inside while it's open.
  */
 export default function RecycleBin({ editions, isOpen, onClose }) {
-  const ref = useRef(null)
-
-  useEffect(() => {
-    const dialog = ref.current
-    if (isOpen && !dialog.open) dialog.showModal()
-    if (!isOpen && dialog.open) dialog.close()
-  }, [isOpen])
-
-  // Clicks on the dimmed backdrop land on the dialog itself, not the window inside it
-  const handleClick = (event) => {
-    if (event.target === event.currentTarget) onClose()
-  }
+  const dialogProps = useModalDialog(isOpen, onClose)
 
   return (
-    <dialog ref={ref} className="bin" aria-label="Recycle bin" onClose={onClose} onClick={handleClick}>
+    <dialog {...dialogProps} className="bin" aria-label="Recycle bin">
       {/* Mounted only while open, so the window plays its open animation each time */}
       {isOpen && (
         <Window title="recycle_bin" accent="lime" onClose={onClose}>
