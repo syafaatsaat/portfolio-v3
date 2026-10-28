@@ -16,7 +16,9 @@ export default function Projects({ items, total, note }) {
         ))}
       </div>
       <div className="apps__footer">
-        <p className="apps__note">* {note}</p>
+        <p className="apps__note">
+          <span className="app__badge-mark" aria-hidden="true">✦</span> {note}
+        </p>
         <RouteLink href="/projects" className="app__source apps__more">
           <span className="app__source-label">&gt; open {SECTION_FILES.projects.file} --all ({total})</span>
           <ArrowIcon direction="right" />

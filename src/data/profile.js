@@ -108,6 +108,7 @@ export const skills = [
 // preview: image in /public/projects (screenshot, topic image or video thumbnail); null shows the illustrated art
 // video: games only; a YouTube link or a file in /public/projects, played in a pop-up
 // featured: shown on the home page; every project is listed on /projects
+// builtWithClaude: built end to end with Claude Code; the card gets a badge (leave out otherwise)
 export const projects = [
   {
     id: 'linework',
@@ -120,6 +121,7 @@ export const projects = [
     motif: 'lines',
     kind: 'web',
     featured: true,
+    builtWithClaude: true,
   },
   {
     id: 'holo-vault',
@@ -132,6 +134,7 @@ export const projects = [
     motif: 'card',
     kind: 'web',
     featured: true,
+    builtWithClaude: true,
   },
   {
     id: 'memory-legends',
@@ -144,6 +147,7 @@ export const projects = [
     motif: 'tiles',
     kind: 'web',
     featured: true,
+    builtWithClaude: true,
   },
   {
     id: 'battleship',
@@ -369,7 +373,8 @@ export const projects = [
   },
 ]
 
-export const projectsNote = 'Linework, Holo Vault and Memory Legends built end to end with Claude Code.'
+// Legend for the Claude Code badge on project cards
+export const projectsNote = 'Built end to end with Claude Code'
 
 /** Earlier versions of this portfolio, oldest first; v3 is this site. Shown by each theme's easter egg. */
 export const pastEditions = [

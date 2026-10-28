@@ -19,7 +19,14 @@ export default function ProjectCard({ project }) {
         onPlay={openVideo}
       />
       <div className="project__info">
-        <span className="label">{project.category}</span>
+        <div className="project__tags">
+          <span className="label">{project.category}</span>
+          {project.builtWithClaude && (
+            <span className="project__badge" title="Built end to end with Claude Code">
+              <span className="project__badge-mark" aria-hidden="true">✦</span> Claude Code
+            </span>
+          )}
+        </div>
         <h3 className="project__name">{project.name}</h3>
         <p className="project__description">{project.description}</p>
         <div className="project__links">

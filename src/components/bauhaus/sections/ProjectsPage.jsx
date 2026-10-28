@@ -8,16 +8,20 @@ import ProjectCard from './ProjectCard.jsx'
 export default function ProjectsPage({ items, note }) {
   return (
     <Section id="projects" title="All projects">
-      <RouteLink href="/#projects" className="project__link projects-back">
-        <ArrowIcon direction="left" />
-        <span className="project__link-label">Back home</span>
-      </RouteLink>
+      <div className="projects-header">
+        <RouteLink href="/#projects" className="project__link projects-back">
+          <ArrowIcon direction="left" />
+          <span className="project__link-label">Back home</span>
+        </RouteLink>
+        <p className="label projects-note">
+          <span className="project__badge-mark" aria-hidden="true">✦</span> {note}
+        </p>
+      </div>
       <Bento columns={2}>
         {items.map((project) => (
           <ProjectCard key={project.id} project={project} />
         ))}
       </Bento>
-      <p className="label projects-note">{note}</p>
     </Section>
   )
 }

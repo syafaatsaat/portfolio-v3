@@ -14,12 +14,14 @@ export default function ProjectsPage({ items, note }) {
         <span className="app__source-label">cd ..</span>
       </RouteLink>
       <ChromeHeading glitch className="section-title section-title--standalone">{`${SECTION_FILES.projects.file}*`}</ChromeHeading>
+      <p className="apps__note apps__note--top">
+        <span className="app__badge-mark" aria-hidden="true">✦</span> {note}
+      </p>
       <div className="apps">
         {items.map((project, index) => (
           <ProjectApp key={project.id} project={project} index={index} />
         ))}
       </div>
-      <p className="apps__note">* {note}</p>
     </Section>
   )
 }

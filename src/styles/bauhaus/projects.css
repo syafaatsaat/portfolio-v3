@@ -162,6 +162,39 @@
     padding: 24px 26px 28px;
   }
 
+  .project__tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px 12px;
+  }
+
+  /* Marks projects built with Claude Code; the ✦ also leads the legend under the grid */
+  .project__badge {
+    padding: 3px 8px;
+    background: var(--black);
+    color: var(--paper);
+    font-size: 11px;
+    font-weight: 800;
+    line-height: 1.4;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    white-space: nowrap;
+  }
+
+  .project__badge-mark { color: var(--yellow); }
+
+  .projects-note .project__badge-mark {
+    display: inline-grid;
+    place-items: center;
+    width: 20px;
+    height: 20px;
+    margin-right: 4px;
+    background: var(--black);
+    letter-spacing: 0;
+  }
+
   .project__name {
     font-size: 26px;
     font-weight: 900;
@@ -311,7 +344,18 @@
   }
 
   .projects-more { margin-top: 14px; }
-  .projects-back { margin-bottom: 18px; }
+
+  /* "Back home" and the badge legend share a row above the /projects grid */
+  .projects-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+    margin-bottom: 18px;
+
+    .projects-note { margin-top: 0; }
+  }
 
   /* ---------- Project artwork ---------- */
   .art-lines {

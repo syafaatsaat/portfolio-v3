@@ -44,7 +44,14 @@ export default function ProjectApp({ project, index }) {
       <div className="window__body app__body">
         <h3 className="app__name">{project.name}</h3>
         <p className="app__description">{project.description}</p>
-        <span className="app__meta">// {project.category.toLowerCase()}</span>
+        <span className="app__meta">
+          // {project.category.toLowerCase()}
+          {project.builtWithClaude && (
+            <span className="app__badge" title="Built end to end with Claude Code">
+              <span aria-hidden="true">✦</span> claude_code
+            </span>
+          )}
+        </span>
         <div className="app__actions">
           {openVideo && (
             <GlossButton

@@ -185,6 +185,20 @@
     color: var(--mute);
   }
 
+  /* Marks projects built with Claude Code; the ✦ also leads the legend */
+  .app__badge {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 1px 7px;
+    border: 1px solid var(--lime);
+    border-radius: 3px;
+    color: var(--lime);
+    box-shadow: 0 0 8px rgb(182 255 59 / 0.35);
+    white-space: nowrap;
+  }
+
+  .app__badge-mark { color: var(--lime); text-shadow: 0 0 6px var(--lime); }
+
   .apps__note {
     margin-top: 48px;
     font-family: var(--font-mono);
@@ -201,6 +215,7 @@
     gap: 0 24px;
   }
 
+  .apps__note.apps__note--top { margin: -8px 0 28px; }
   .apps__more { margin-top: 48px; font-size: 13px; }
   .apps__back { margin-bottom: 18px; font-size: 13px; }
 

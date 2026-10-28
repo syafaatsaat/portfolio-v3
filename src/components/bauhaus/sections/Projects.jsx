@@ -14,7 +14,9 @@ export default function Projects({ items, total, note }) {
         ))}
       </Bento>
       <div className="projects-footer">
-        <p className="label projects-note">{note}</p>
+        <p className="label projects-note">
+          <span className="project__badge-mark" aria-hidden="true">✦</span> {note}
+        </p>
         <RouteLink href="/projects" className="project__link projects-more">
           <span className="project__link-label">All projects ({total})</span>
           <ArrowIcon direction="right" />
