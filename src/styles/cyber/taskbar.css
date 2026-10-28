@@ -144,6 +144,19 @@
     .taskbar__menu-exit { display: block; }
   }
 
+  /* Mid-size screens: the full taskbar doesn't fit, so tabs lose their icons and the tray its label */
+  @media (min-width: 769px) and (max-width: 1100px) {
+    .taskbar__links { gap: 4px; }
+
+    .taskbar__tab {
+      padding: 0 8px;
+
+      &::before { display: none; }
+    }
+
+    .taskbar__online { display: none; }
+  }
+
   @media (max-width: 768px) {
     .taskbar {
       top: 0;

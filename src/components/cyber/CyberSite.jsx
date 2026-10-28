@@ -19,7 +19,7 @@ export default function CyberSite({ profile, page, onToggleTheme }) {
 
   return (
     <div className="cyber">
-      <Taskbar timeZone={person.timeZone} timeZoneLabel={person.timeZoneLabel} onExit={powerOff.start} />
+      <Taskbar brand={person.userName} timeZone={person.timeZone} timeZoneLabel={person.timeZoneLabel} onExit={powerOff.start} />
       {page === 'projects' ? (
         <main id="top">
           <ProjectsPage items={projects} note={projectsNote} />

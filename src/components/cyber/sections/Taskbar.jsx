@@ -8,7 +8,7 @@ import RouteLink from '../../shared/RouteLink.jsx'
 import { SECTION_FILES } from '../sectionFiles.js'
 
 /** Bottom taskbar on desktop, top bar with a menu on phones. Doubles as the site navigation. */
-export default function Taskbar({ timeZone, timeZoneLabel, onExit }) {
+export default function Taskbar({ brand, timeZone, timeZoneLabel, onExit }) {
   const activeId = useActiveSection(SECTION_IDS)
   const menu = useMobileMenu()
   const time = useClock(timeZone)
@@ -18,7 +18,7 @@ export default function Taskbar({ timeZone, timeZoneLabel, onExit }) {
       <nav className="taskbar__inner" aria-label="Main">
         <RouteLink href="/#top" className="taskbar__start">
           <span className="taskbar__orb" aria-hidden="true" />
-          SYAF_OS
+          {brand}
         </RouteLink>
         <button
           type="button"
@@ -52,7 +52,8 @@ export default function Taskbar({ timeZone, timeZoneLabel, onExit }) {
         <div className="taskbar__tray">
           <span className="taskbar__status" aria-hidden="true" />
           <span>
-            ONLINE · <time>{time}</time> {timeZoneLabel}
+            <span className="taskbar__online">ONLINE · </span>
+            <time>{time}</time> {timeZoneLabel}
           </span>
           <button type="button" className="taskbar__exit" onClick={onExit} aria-label="Exit SYAF_OS, switch back to main theme">
             ⏻ Exit
