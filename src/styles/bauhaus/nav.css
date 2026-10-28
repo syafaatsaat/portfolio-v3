@@ -164,4 +164,11 @@
     .nav__link--active,
     .nav__link--active:hover { background: var(--yellow); }
   }
+
+  /* The username brand is long; shrink it on the smallest phones so it clears the Menu button */
+  @media (max-width: 400px) {
+    .nav__brand { gap: 8px; font-size: 16px; letter-spacing: 0.04em; }
+    .nav__mark i { width: 11px; height: 11px; }
+    .nav__mark i:nth-child(3) { width: 13px; }
+  }
 }
