@@ -280,11 +280,11 @@ export const projects = [
   {
     id: 'portfolio-v1',
     name: 'Portfolio V1',
-    sourceUrl: 'https://github.com/syafaatsaat/html-portfolio',
-    liveUrl: 'https://syafaatsaat.github.io/html-portfolio/',
+    sourceUrl: 'https://github.com/syafaatsaat/portfolio',
+    liveUrl: 'https://syafaatsaat.github.io/portfolio/',
     preview: '/projects/portfolio-v1.webp',
     category: 'Web · Portfolio',
-    description: 'My first portfolio website, written in plain HTML.',
+    description: 'My first portfolio website, built with HTML, CSS and JavaScript while teaching myself web development.',
     motif: 'grid',
     kind: 'web',
     featured: false,
@@ -373,7 +373,7 @@ export const projectsNote = 'Linework, Holo Vault and Memory Legends built end t
 
 /** Earlier versions of this portfolio, oldest first; v3 is this site. Shown by each theme's easter egg. */
 export const pastEditions = [
-  { id: 'v1', year: 2024, stack: 'HTML', url: 'https://syafaatsaat.github.io/html-portfolio/' },
+  { id: 'v1', year: 2024, stack: 'HTML · CSS · JavaScript', url: 'https://syafaatsaat.github.io/portfolio/' },
   { id: 'v2', year: 2026, stack: 'HTML · CSS · JavaScript', url: 'https://syafaatsaat.github.io/odin-portfolio/' },
 ]
 
