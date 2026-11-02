@@ -393,7 +393,7 @@ export const links = {
     url: 'https://github.com/syafaatsaat',
     label: '@syafaatsaat',
   },
-  cv: '/resume/Muhammad_Nur_Syafaat_CV_Junior_AI_Developer.pdf',
+  cv: '/resume/Muhammad_Nur_Syafaat_Bin_Mohamed_Saat_Junior_AI_Developer.pdf',
 }
 
 export const profile = { person, education, experience, skills, projects, projectsNote, pastEditions, links }
