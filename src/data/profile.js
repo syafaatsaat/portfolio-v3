@@ -173,7 +173,7 @@ export const projects = [
     description: 'A classic Battleship game, play with a friend locally or challenge a bot.',
     motif: 'grid',
     kind: 'web',
-    featured: true,
+    featured: false,
   },
   {
     id: 'portfolio-v2',
