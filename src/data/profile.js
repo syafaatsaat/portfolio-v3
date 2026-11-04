@@ -112,6 +112,19 @@ export const skills = [
 // builtWithClaude: built end to end with Claude Code; the card gets a badge (leave out otherwise)
 export const projects = [
   {
+    id: 'pulse-workout',
+    name: 'Pulse',
+    sourceUrl: 'https://github.com/syafaatsaat/pulse-workout',
+    liveUrl: 'https://pulse-workout-rho.vercel.app/',
+    preview: '/projects/pulse.webp',
+    category: 'React · Fitness',
+    description: 'A home-workout player with big set and rest timers, keeping sessions and personal bests on the device.',
+    motif: 'grid',
+    kind: 'web',
+    featured: true,
+    builtWithClaude: true,
+  },
+  {
     id: 'linework',
     name: 'Linework',
     sourceUrl: 'https://github.com/syafaatsaat/linework',
